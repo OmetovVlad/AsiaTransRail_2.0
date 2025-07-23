@@ -1,5 +1,6 @@
 import webp from 'gulp-webp';
-import imagemin, { gifsicle, mozjpeg, optipng, svgo } from 'gulp-imagemin';
+import imagemin, { gifsicle, optipng, svgo } from 'gulp-imagemin';
+import imageminMozjpeg from 'imagemin-mozjpeg';
 // import imagemin from "gulp-imagemin";
 
 export const images = () => {
@@ -21,7 +22,7 @@ export const images = () => {
     .pipe(
       imagemin([
         gifsicle({ interlaced: true }),
-        mozjpeg({ quality: 90, progressive: true }),
+        imageminMozjpeg({ quality: 80, progressive: true }),
         optipng({ optimizationLevel: 1 }),
         svgo({
           plugins: [

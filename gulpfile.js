@@ -18,6 +18,7 @@ import { images } from './gulp/tasks/images.js';
 import { favicon } from './gulp/tasks/favicon.js';
 import { otfToTtf, ttfToWoff, fonstStyle } from './gulp/tasks/fonts.js';
 import { sprite } from './gulp/tasks/sprite.js';
+import { videos } from "./gulp/tasks/videos.js";
 
 function watcher() {
   gulp.watch(path.watch.files, copy);
@@ -25,6 +26,7 @@ function watcher() {
   gulp.watch(path.watch.scss, scss);
   gulp.watch(path.watch.js, js);
   gulp.watch(path.watch.images, images);
+  gulp.watch(path.watch.video, videos);
   gulp.watch(path.watch.favicon, favicon);
 }
 
@@ -34,7 +36,7 @@ const fonts = gulp.series(otfToTtf, ttfToWoff, fonstStyle);
 
 const mainTasks = gulp.series(
   fonts,
-  gulp.parallel(copy, html, scss, js, images, favicon, sprite)
+  gulp.parallel(copy, html, scss, js, images, videos, favicon, sprite)
 );
 
 const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server));
