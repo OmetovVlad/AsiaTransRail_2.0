@@ -15,21 +15,6 @@ if (isMobile()) {
   document.documentElement.classList.add('_pc');
 }
 
-// Блокировка скролла
-export const bodyLock = (e) => {
-  document.documentElement.classList.add('_lock');
-  let widthScrollBar = window.innerWidth - document.documentElement.clientWidth;
-  // document.querySelector('.header').style.marginRight = widthScrollBar + 'px';
-  document.documentElement.style.marginRight = widthScrollBar + 'px';
-};
-
-// Удаление блокировки скролла
-export const bodyUnLock = (e) => {
-  document.documentElement.style.marginRight = '0px';
-  // document.querySelector('.header').style.marginRight = '0px';
-  document.documentElement.classList.remove('_lock');
-};
-
 /* Проверка поддержки webp, добавление класса webp или no-webp для HTML */
 export function isWebp() {
   // Проверка поддержки webp

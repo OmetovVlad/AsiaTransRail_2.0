@@ -24,6 +24,7 @@ export const scss = () => {
       sass({
         silenceDeprecations: ['legacy-js-api'],
         outputStyle: 'expanded',
+        includePaths: ['./node_modules']
       })
     )
     .pipe(groupCssMediaQueries())
