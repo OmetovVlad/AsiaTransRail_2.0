@@ -181,6 +181,7 @@ if ( document.documentElement.classList.contains('_pc') ) {
   const heroIconsDot_second = document.querySelectorAll("#hero .logistics__line.second .logistics__icons .line .dot");
 
   const servicesItem = document.querySelectorAll("#hero .logistics .services_list .services_item");
+  const servicesNameList = document.querySelectorAll("#hero .services_name_list .services_name_item");
 
   let helloAnimation = gsap.timeline({ paused: true,
     defaults: { duration: 0.75, ease: "power3.inOut" }
@@ -260,6 +261,20 @@ if ( document.documentElement.classList.contains('_pc') ) {
     )
     .fromTo(
       servicesItem,
+      {
+        opacity: 0,
+        yPercent: 20
+      },
+      {
+        opacity: 1,
+        yPercent: 0,
+        ease: 'power2.out',
+        stagger: 0.2,
+      },
+      "endDotsAnimation"
+    )
+    .fromTo(
+      servicesNameList,
       {
         opacity: 0,
         yPercent: 20
