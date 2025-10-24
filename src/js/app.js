@@ -46,7 +46,7 @@ const imageSlider = new Swiper('.imageSlider', {
   speed: 500,
   effect: 'gl',
   gl: {
-    shader: ['morph-x'],
+    shader: ['wave-x'],
   },
 });
 
