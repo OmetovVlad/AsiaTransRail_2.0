@@ -5,17 +5,19 @@
 
 // Шрифты
 // Удалить файл fonts.scss, если произошли какие-то изменения со шрифтами
+@import 'swiper-gl.min';
 @import 'fonts';
 
 // Переменны (цвета, скорость transition и пр)
-@import '_variables';
+@import 'variables';
 
-@import '_pc';
+@import 'pc';
 
-@import '_header';
-@import '_preloader';
-@import '_hello';
-@import '_footer';
+@import 'header';
+@import 'preloader';
+@import 'hero';
+@import 'aboutSlider';
+@import 'footer';
 
 * {
   outline: none;
@@ -120,25 +122,3 @@ body {
     color: #E9492C;
   }
 }
-
-//.swiper {
-//  width: 90%;
-//  height: 600px;
-//  overflow: hidden;
-//}
-//.swiper-slide img {
-//  width: 100%;
-//  height: 100%;
-//  object-fit: cover;
-//  display: block;
-//  opacity: 0;
-//}
-//
-//
-//.swiper-wrapper {
-//  position: absolute;
-//  top: 0;
-//  left: 0;
-//  right: 0;
-//  bottom: 0;
-//}

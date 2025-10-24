@@ -7309,17 +7309,24 @@ function Or({swiper: t, on: e, extendParams: i}) {
       }
     )
 }
-const Lr = new B(".swiper",{
+
+
+const imageSlider = new B(".imageSlider",{
     modules: [Ni, Or],
     speed: 1e3,
     effect: "gl",
     loop: !0,
     gl: {
       shader: "morph-x"
-    },
-    navigation: {
-      prevEl: ".swiper-button-prev",
-      nextEl: ".swiper-button-next"
     }
-  })
-;
+});
+
+const textSlider = new B(".textSlider",{
+  modules: [Ni, Or],
+  speed: 1e3,
+  effect: "fade",
+  loop: !0,
+});
+
+imageSlider.controller.control = textSlider;
+textSlider.controller.control = imageSlider;
