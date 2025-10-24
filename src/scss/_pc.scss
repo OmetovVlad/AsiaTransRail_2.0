@@ -1,0 +1,24 @@
+._pc {
+
+  .preloader {
+    height: 100%;
+    background: #fff;
+    img {
+      opacity: 0;
+    }
+  }
+
+  .header {
+    .menu {
+      ul li a {
+        opacity: 0;
+      }
+    }
+
+    .event_buttons {
+      & > * {
+        opacity: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.logo.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  //height: 100%;
+  height: 6.857142857142857rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  z-index: 9;
+  pointer-events: none;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+
+  img {
+    display: block;
+    transform: scale(0.8);
+    height: 3.428571428571429rem;
+  }
+}

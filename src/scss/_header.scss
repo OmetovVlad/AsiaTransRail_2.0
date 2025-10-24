@@ -1,3 +1,153 @@
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   flex: 0 0 auto;
+  height: 6.857142857142857rem;
+  background: #ffffff;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 0) 100%);
+  z-index: 8;
+  @media (max-width: 767px) {
+    display: none;
+  }
+
+  .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .menu {
+    position: relative;
+    height: 100%;
+    margin-left: -1.5rem;
+    ul {
+      display: flex;
+      flex-direction: row;
+      list-style: none;
+      align-items: stretch;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+
+      li {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        a {
+          display: block;
+          padding: 1rem 1.5rem;
+          text-decoration: none;
+          color: #000000;
+          font-size: 1rem;
+          font-weight: 500;
+
+        }
+      }
+    }
+  }
+
+  .event_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: -1.714285714285714rem;
+
+    .link {
+      padding: 1.714285714285714rem;
+    }
+  }
+}
+
+.mobile-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  height: 3.714285714285714rem;
+  background: #ffffff;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 0) 100%);
+  z-index: 8;
+
+  @media (max-width: 767px) {
+    display: flex;
+  }
+
+  a {
+    display: block;
+    padding: 1.142857142857143rem;
+
+    img {
+      display: block;
+      height: 1.428571428571429rem;
+    }
+  }
+
+  button {
+    border: none;
+    background: none;
+    padding: 1.142857142857143rem;
+  }
+
+  button .x {
+    display: block;
+    width: 1.428571428571429rem;
+    height: 1.428571428571429rem;
+    position: relative;
+    transform: rotate(0);
+    transition: .5s ease-in-out;
+    cursor: pointer;
+  }
+
+  button .x span {
+    display: block;
+    position: absolute;
+    height: 0.1428571428571429rem;
+    width: 1.142857142857143rem;
+    background: #000000;
+    border-radius: 0.1428571428571429rem;
+    opacity: 1;
+    left: 0.1428571428571429rem;
+    transform: rotate(0);
+    transition: .25s ease-in-out;
+  }
+
+  button .x span:nth-child(1) {
+    top: 0.2857142857142857rem;
+  }
+
+  button .x span:nth-child(2),
+  button .x span:nth-child(3) {
+    top: 0.6428571428571429rem;
+  }
+
+  button .x span:nth-child(4) {
+    top: 1rem;
+  }
+
+  button.open .x span:nth-child(1) {
+    top: 0.6428571428571429rem;
+    width: 0;
+    left: 50%;
+  }
+
+  button.open .x span:nth-child(2) {
+    transform: rotate(45deg);
+  }
+
+  button.open .x span:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+
+  button.open .x span:nth-child(4) {
+    top: 0.6428571428571429rem;
+    width: 0;
+    left: 50%;
+  }
 }
