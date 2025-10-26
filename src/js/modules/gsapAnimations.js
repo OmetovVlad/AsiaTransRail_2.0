@@ -288,11 +288,9 @@ if ( document.documentElement.classList.contains('_pc') ) {
       trigger: "#aboutSlider",
       markers: false,
       start: 'top center',
-      // end: 'bottom center',
       pin: false,
-      // scrub: 2,
-      toggleActions: "play none none none", // играем один раз
-      once: true // альтернативно — сразу выключает откат
+      toggleActions: "play none none none",
+      once: true
     },
     defaults: { ease: "power3.inOut" }
   });
@@ -310,11 +308,9 @@ if ( document.documentElement.classList.contains('_pc') ) {
       trigger: "#aboutCompany",
       markers: false,
       start: 'top center',
-      // end: 'bottom center',
       pin: false,
-      // scrub: 2,
-      toggleActions: "play none none none", // играем один раз
-      once: true // альтернативно — сразу выключает откат
+      toggleActions: "play none none none",
+      once: true
     },
     defaults: { ease: "power3.inOut" }
   });

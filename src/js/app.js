@@ -32,17 +32,6 @@ const swiper = new Swiper(".mobile_services_list", {
   spaceBetween: remToPx(1.142857142857143),
 });
 
-// const slider = new Swiper('.mainSlider', {
-//   loop: true,
-//   speed: 1000,
-//   effect: 'gl',
-//   gl: { shader: 'morph-x' },
-//   navigation: {
-//     nextEl: '.swiper-button-next',
-//     prevEl: '.swiper-button-prev',
-//   },
-// });
-
 const imageSlider = new Swiper('.imageSlider', {
   modules: [Navigation, Controller],
   speed: 500,
@@ -56,7 +45,7 @@ const imageSlider = new Swiper('.imageSlider', {
     type: "progressbar",
   },
   breakpoints: {
-    767: {
+    768: {
       loop: true,
     }
   }
@@ -72,11 +61,6 @@ const textSlider = new Swiper('.textSlider', {
     nextEl: '#aboutSlider .swiper-button-next',
     prevEl: '#aboutSlider .swiper-button-prev',
   },
-  breakpoints: {
-    767: {
-      loop: true,
-    }
-  }
 });
 
 const navSlider = new Swiper('.navSlider .slider', {
@@ -92,3 +76,23 @@ const navSlider = new Swiper('.navSlider .slider', {
 textSlider.controller.control = [imageSlider, navSlider];
 imageSlider.controller.control = textSlider;
 navSlider.controller.control = textSlider;
+
+const storySlider = new Swiper(".storySlider", {
+  modules: [Navigation],
+  slidesPerView: 2.5,
+  // centeredSlides: true,
+  spaceBetween: remToPx(1.142857142857143),
+  freeMode: true,
+  // autoHeight: true,
+  navigation: {
+    nextEl: '.storySlider_nav .swiper-button-next',
+    prevEl: '.storySlider_nav .swiper-button-prev',
+  },
+  breakpoints: {
+    768: {
+      slidesPerView: 5.3,
+      // centeredSlides: false,
+      spaceBetween: remToPx(6.428571428571429),
+    }
+  }
+});
