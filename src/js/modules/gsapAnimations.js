@@ -115,11 +115,6 @@ if ( document.documentElement.classList.contains('_pc') ) {
   });
 
   preloaderAnimation
-    // .fromTo(
-    //   ".logo.preloader",
-    //   { autoAlpha: 0, scale: 0.35, borderRadius: '2em'},
-    //   { autoAlpha: 1, scale: 0.5, borderRadius: '2em', duration: 0.75, ease: "back.inOut(2)", }
-    // )
     .fromTo(
       ".logo.preloader img",
       { scale: 0.5, opacity: 0 },
@@ -286,6 +281,49 @@ if ( document.documentElement.classList.contains('_pc') ) {
         stagger: 0.2,
       },
       "endDotsAnimation"
+    )
+
+  let aboutSliderAnimations = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#aboutSlider",
+      markers: false,
+      start: 'top center',
+      // end: 'bottom center',
+      pin: false,
+      // scrub: 2,
+      toggleActions: "play none none none", // играем один раз
+      once: true // альтернативно — сразу выключает откат
+    },
+    defaults: { ease: "power3.inOut" }
+  });
+
+  aboutSliderAnimations.addLabel('startSliderAbout')
+    .fromTo(
+      "#aboutSlider",
+      { opacity: 0, yPercent: 20},
+      { opacity: 1, yPercent: 0},
+    )
+
+
+  let aboutAnimations = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#aboutCompany",
+      markers: false,
+      start: 'top center',
+      // end: 'bottom center',
+      pin: false,
+      // scrub: 2,
+      toggleActions: "play none none none", // играем один раз
+      once: true // альтернативно — сразу выключает откат
+    },
+    defaults: { ease: "power3.inOut" }
+  });
+
+  aboutAnimations.addLabel('startAbout')
+    .fromTo(
+      "#aboutCompany",
+      { opacity: 0, yPercent: 20},
+      { opacity: 1, yPercent: 0},
     )
 
 

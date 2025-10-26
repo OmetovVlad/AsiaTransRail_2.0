@@ -1,0 +1,186 @@
+#aboutCompany {
+  position: relative;
+  padding: 8.571428571428571rem 0;
+  background: #4C5866;
+  border-radius: 1.142857142857143rem;
+  overflow: hidden;
+
+  @media (max-width: 767px) {
+    padding: 2.285714285714286rem 0 3.714285714285714rem;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: -50%;
+    background: rgba(215, 215, 215, 10.05);
+    background: linear-gradient(180deg, rgba(215, 215, 215, 0.25) 0%, rgba(46, 58, 72, 0.32) 37%, rgba(233, 73, 44, 0.7) 100%);
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .chart_wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 1.714285714285714rem;
+    align-items: start;
+    margin-top: 10.5rem;
+
+    .chart_text {
+      width: 47.14285714285714rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3.428571428571429rem;
+      padding-top: 2rem;
+
+      img {
+        width: 19.78571428571429rem;
+      }
+
+      span {
+        display: block;
+        color: #FFFFFF;
+        font-size: 1.285714285714286rem;
+        line-height: 2.142857142857143rem;
+        letter-spacing: -0.0571428571428571rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+      margin-top: 4.571428571428571rem;
+      gap: 4.571428571428571rem;
+
+      .chart_text {
+        width: 25.57142857142857rem;
+        gap: 1.142857142857143rem;
+        padding: 0;
+
+        img {
+          width: 12.21428571428571rem;
+        }
+
+        span {
+          font-size: 1rem;
+          line-height: 1.428571428571429rem;
+          letter-spacing: -0.0285714285714286rem;
+        }
+      }
+    }
+  }
+
+  .chart {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 1.714285714285714rem;
+    align-items: center;
+
+    @media (max-width: 767px) {
+      width: 100%;
+      flex-direction: column;
+      gap: 2.285714285714286rem;
+    }
+  }
+
+  #chart {
+    width: 22.71428571428571rem!important;
+    height: 22.71428571428571rem!important;
+
+    @media (max-width: 767px) {
+      width: 18.92857142857143rem!important;
+      height: 18.92857142857143rem!important;
+    }
+  }
+
+  .chart-legend {
+    width: 22.71428571428571rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.285714285714286rem;
+
+    @media (max-width: 767px) {
+      width: 25.57142857142857rem;
+      gap: 1.142857142857143rem;
+    }
+
+    .label {
+      display: flex;
+      align-items: center;
+      gap: 0.2857142857142857rem;
+
+      .dot {
+        width: 0.2857142857142857rem;
+        height: 0.2857142857142857rem;
+        border-radius: 50%;
+      }
+      .name {
+        color: #FFFFFF;
+      }
+      .percent {
+        margin-left: auto;
+      }
+    }
+  }
+
+  .advantages_list {
+    margin-top: 10.57142857142857rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 3.542857142857143rem;
+    text-align: center;
+    color: #FFFFFF;
+
+    @media (max-width: 767px) {
+      margin-top: 4.571428571428571rem;
+      flex-wrap: wrap;
+      gap: 2.857142857142857rem 1.142857142857143rem;
+    }
+
+    .advantages_item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.714285714285714rem;
+
+      &:nth-child(even) {
+        margin-top: 13.71428571428571rem;
+      }
+
+      @media (max-width: 767px) {
+        flex: auto;
+        width: 12.21428571428571rem;
+        gap: 1.142857142857143rem;
+
+        &:nth-child(even) {
+          margin-top: 0;
+        }
+      }
+
+    }
+
+    .name {
+      font-size: 3rem;
+      line-height: 3.428571428571429rem;
+      font-weight: 500;
+      letter-spacing: -0.1428571428571429rem;
+
+      @media (max-width: 767px) {
+        font-size: 1.571428571428571rem;
+        line-height: 2.285714285714286rem;
+        letter-spacing: -0.0857142857142857rem;
+      }
+    }
+  }
+}

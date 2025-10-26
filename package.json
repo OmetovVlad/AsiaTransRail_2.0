@@ -21,6 +21,7 @@
   "homepage": "",
   "dependencies": {
     "bootstrap": "^5.2.3",
+    "chart.js": "^4.5.1",
     "connect-modrewrite": "^0.10.2",
     "gsap": "^3.13.0",
     "gulp-cli": "^2.3.0",

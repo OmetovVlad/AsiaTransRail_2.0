@@ -1,10 +1,12 @@
 import Swiper from 'swiper';
-import {EffectFade, Controller, Pagination} from 'swiper/modules';
+import {Navigation, EffectFade, EffectCreative, Controller, Pagination} from 'swiper/modules';
 import SwiperGL from './modules/swiper-gl.js';
 
 import * as functions from './modules/baseFunctions.js';
 import './modules/phoneInputMask.js';
 import './modules/gsapAnimations.js';
+
+import './modules/chart.js';
 
 
 functions.isWebp();
@@ -23,7 +25,7 @@ const remToPx = (rem) => {
 };
 
 
-Swiper.use([SwiperGL, Controller, EffectFade, Pagination]);
+Swiper.use([Navigation, SwiperGL, Controller, EffectFade, EffectCreative, Pagination]);
 
 const swiper = new Swiper(".mobile_services_list", {
   slidesPerView: 1.34,
@@ -42,24 +44,51 @@ const swiper = new Swiper(".mobile_services_list", {
 // });
 
 const imageSlider = new Swiper('.imageSlider', {
-  modules: [Controller],
+  modules: [Navigation, Controller],
   speed: 500,
+  loop: false,
   effect: 'gl',
   gl: {
     shader: ['wave-x'],
   },
-});
-
-const textSlider = new Swiper('.textSlider', {
-  modules: [EffectFade, Controller],
-  effect: 'fade',
-  spaceBetween: 0,
-  speed: 500,
   pagination: {
     el: ".swiper-pagination",
     type: "progressbar",
   },
+  breakpoints: {
+    767: {
+      loop: true,
+    }
+  }
 });
 
+const textSlider = new Swiper('.textSlider', {
+  modules: [Navigation, EffectFade],
+  spaceBetween: 0,
+  speed: 500,
+  effect: 'fade',
+  loop: true,
+  navigation: {
+    nextEl: '#aboutSlider .swiper-button-next',
+    prevEl: '#aboutSlider .swiper-button-prev',
+  },
+  breakpoints: {
+    767: {
+      loop: true,
+    }
+  }
+});
+
+const navSlider = new Swiper('.navSlider .slider', {
+  modules: [EffectFade],
+  spaceBetween: 0,
+  speed: 500,
+  loop: true,
+  grabCursor: true,
+  effect: 'fade',
+  autoHeight: true,
+});
+
+textSlider.controller.control = [imageSlider, navSlider];
 imageSlider.controller.control = textSlider;
-textSlider.controller.control = imageSlider;
+navSlider.controller.control = textSlider;
