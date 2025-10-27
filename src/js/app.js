@@ -11,6 +11,15 @@ import './modules/chart.js';
 
 functions.isWebp();
 
+const phoneInputs = document.querySelectorAll('.phone');
+const maskOptions = {
+  mask: '+{7} (000) 000-00-00'
+};
+
+phoneInputs.forEach((phoneInput) => {
+  const mask = IMask(phoneInput, maskOptions);
+})
+
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.querySelector('.open_menu');
   if (!btn) return;

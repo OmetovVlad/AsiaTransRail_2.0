@@ -16,12 +16,14 @@
 @import 'header';
 @import 'preloader';
 @import 'marquee';
+@import 'form';
 @import 'hero';
 @import 'aboutSlider';
 @import 'aboutCompany';
 @import 'story';
 @import 'clients';
 @import 'partners';
+@import 'callbackOrder';
 @import 'footer';
 
 * {
@@ -93,7 +95,6 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.7142857142857143rem;
-  border: none;
   height: 3.428571428571429rem;
   padding: 0 2rem;
   border-radius: 0.5714285714285714rem;
@@ -103,6 +104,7 @@ body {
   backdrop-filter: blur(10px);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  border: 1px solid #D7D7D7;
 
   @media (max-width: 767px) {
     height: 2.857142857142857rem;
@@ -144,6 +146,7 @@ body {
     font-family: NeverMindUltra, sans-serif;
     font-size: 3.428571428571429rem;
     line-height: 5.714285714285714rem;
+    letter-spacing: -0.1142857142857143rem;
 
     @media (max-width: 767px) {
       font-size: 1.714285714285714rem;

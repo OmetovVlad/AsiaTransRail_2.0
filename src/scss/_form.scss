@@ -1,0 +1,196 @@
+.form {
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.714285714285714rem;
+  }
+
+  .line {
+    display: flex;
+    flex-direction: row;
+    gap: 1.714285714285714rem;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: row;
+    gap: 1.714285714285714rem;
+
+    @media (max-width: 768px) {
+      background: #FFFFFF;
+      border-radius: 0.5714285714285714rem;
+    }
+
+    input[type='text'] {
+      width: 22.71428571428571rem;
+      display: block;
+      padding: 1rem;
+      border: none;
+      border-radius: 0.5714285714285714em;
+      transition: all 0.2s ease-in-out;
+
+      &.invalid{
+        background: rgba(243, 39, 53, 0.2);
+      }
+
+      @media (max-width: 768px) {
+        line-height: 1rem;
+        padding: 0.7142857142857143rem 1.142857142857143rem;
+      }
+    }
+
+    button {
+      display: block;
+      width: 14.57142857142857rem;
+
+      @media (max-width: 768px) {
+        width: 2.857142857142857rem;
+      }
+
+      span {
+        width: 100%;
+        min-width: 0;
+
+        @media (max-width: 768px) {
+          display: none;
+        }
+      }
+
+      img {
+        display: none;
+
+        @media (max-width: 768px) {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .approve {
+    width: 39rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: 767px) {
+      width: 25.57142857142857rem;
+
+      br {
+        display: none;
+      }
+    }
+
+    label {
+      display: block;
+      cursor: pointer;
+
+      input[type='checkbox'] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      span {
+        display: block;
+        position: relative;
+        padding-left: 2.285714285714286rem;
+        color: rgba(255, 255, 255, 0.8);
+        transition: all 0.2s ease-in-out;
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: block;
+          width: 1.428571428571429rem;
+          height: 1.428571428571429rem;
+          transition: all 0.2s ease-in-out;
+          border-radius: 0.3571428571428571rem;
+          border: 0.0714285714285714rem solid #FFFFFF;
+          opacity: 0.5;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 1.428571428571429rem;
+          height: 1.428571428571429rem;
+          border-radius: 0.3571428571428571rem;
+          background-image: url('../img/check.svg');
+          background-position: center;
+          background-repeat: no-repeat;
+          opacity: 0;
+          border: 0.0714285714285714rem solid #e9492c;
+          transition: all 0.2s ease-in-out;
+        }
+
+
+        a {
+          color: rgba(255, 255, 255, 0.8);
+          border-bottom: 0.0714285714285714rem solid;
+          transition: all 0.2s ease-in-out;
+          text-decoration: none;
+
+          @media (hover: hover) {
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+              opacity: 1;
+              color: #e9492c!important;
+            }
+          }
+        }
+
+        &:hover {
+          color: rgb(255, 255, 255);
+
+          &:before {
+            border: 0.0625em solid rgb(255,255,255);
+          }
+
+          a {
+            color: rgb(255, 255, 255);
+          }
+        }
+      }
+
+      input[type='checkbox']:checked + span {
+        color: rgb(255, 255, 255);
+
+        &:before {
+          border-color: #e9492c!important;
+          background-color: #e9492c;
+        }
+
+        &:after {
+          opacity: 1;
+        }
+
+        a {
+          color: rgb(255, 255, 255);
+        }
+      }
+
+      input[type='checkbox'].invalid  + span {
+        color: #F32735!important;
+
+        &:before {
+          border-color: #F32735!important;
+        }
+
+        a {
+          color: #F32735!important;
+        }
+      }
+    }
+  }
+}
