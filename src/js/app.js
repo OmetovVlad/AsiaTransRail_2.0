@@ -82,7 +82,8 @@ const storySlider = new Swiper(".storySlider", {
   slidesPerView: 2.5,
   // centeredSlides: true,
   spaceBetween: remToPx(1.142857142857143),
-  freeMode: true,
+  freeMode: true,            // свободный режим
+  freeModeMomentum: false,   // без инерции
   // autoHeight: true,
   navigation: {
     nextEl: '.storySlider_nav .swiper-button-next',
@@ -96,3 +97,5 @@ const storySlider = new Swiper(".storySlider", {
     }
   }
 });
+
+const marquees = document.querySelectorAll(".marquee");

@@ -15,10 +15,13 @@
 
 @import 'header';
 @import 'preloader';
+@import 'marquee';
 @import 'hero';
 @import 'aboutSlider';
 @import 'aboutCompany';
 @import 'story';
+@import 'clients';
+@import 'partners';
 @import 'footer';
 
 * {
@@ -146,6 +149,10 @@ body {
       font-size: 1.714285714285714rem;
       line-height: 2.571428571428571rem;
       letter-spacing: -0.0571428571428571rem;
+    }
+
+    span {
+      color: #E9492C;
     }
   }
 
