@@ -39,21 +39,22 @@
 
     .logistics__title {
 
-      font-family: "NeverMindUltra", sans-serif;
+      //font-family: "NeverMindUltra", sans-serif;
       font-size: 4.428571428571429rem;
       line-height: 7.142857142857143rem;
       letter-spacing: -0.1857142857142857rem;
+      font-weight: 500;
 
       @media (max-width: 767px) {
-        font-size: 2.285714285714286rem;
+        font-size: 3.285714285714286rem;
         line-height: 3.428571428571429rem;
-        letter-spacing: -0.0571428571428571rem;
+        letter-spacing: -0.1428571428571429rem;
       }
 
       span {
         letter-spacing: -0.1857142857142857rem;
         @media (max-width: 767px) {
-          letter-spacing: -0.0571428571428571rem;
+          letter-spacing: -0.1428571428571429rem;
         }
       }
     }
@@ -230,7 +231,6 @@
       position: relative;
       //padding-top: 20.42857142857143rem;
       height: 50.5rem;
-      cursor: pointer;
 
       .bg {
         position: absolute;

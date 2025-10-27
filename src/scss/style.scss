@@ -143,15 +143,26 @@ body {
   gap: 1.714285714285714rem;
 
   h2 {
-    font-family: NeverMindUltra, sans-serif;
-    font-size: 3.428571428571429rem;
-    line-height: 5.714285714285714rem;
-    letter-spacing: -0.1142857142857143rem;
+    //font-family: NeverMindUltra, sans-serif;
+    //font-size: 3.428571428571429rem;
+    //line-height: 5.714285714285714rem;
+    //letter-spacing: -0.1142857142857143rem;
+    //font-weight: 500;
+    //
+    //@media (max-width: 767px) {
+    //  font-size: 1.714285714285714rem;
+    //  line-height: 2.571428571428571rem;
+    //  letter-spacing: -0.0571428571428571rem;
+    //}
 
+    font-size: 5.357142857142857rem;
+    line-height: 5.714285714285714rem;
+    letter-spacing: -0.3285714285714286rem;
+    font-weight: 500;
     @media (max-width: 767px) {
-      font-size: 1.714285714285714rem;
+      font-size: 2.857142857142857rem;
       line-height: 2.571428571428571rem;
-      letter-spacing: -0.0571428571428571rem;
+      letter-spacing: -0.1428571428571429rem;
     }
 
     span {
