@@ -307,7 +307,7 @@ if ( document.documentElement.classList.contains('_pc') ) {
     scrollTrigger: {
       trigger: "#aboutCompany",
       markers: false,
-      start: 'top center',
+      start: 'center bottom',
       pin: false,
       toggleActions: "play none none none",
       once: true
@@ -315,7 +315,7 @@ if ( document.documentElement.classList.contains('_pc') ) {
     defaults: { ease: "power3.inOut" }
   });
 
-  aboutAnimations.addLabel('startAbout')
+  aboutAnimations.addLabel('start')
     .fromTo(
       "#aboutCompany",
       { opacity: 0, yPercent: 20},
@@ -323,409 +323,83 @@ if ( document.documentElement.classList.contains('_pc') ) {
     )
 
 
-  // let heroAnimations = gsap.timeline({
-  //   defaults: { duration: 0.75, ease: "power3.inOut" }
-  // });
-  //
-  // heroAnimations
-  //   .fromTo(
-  //     "#hero .bg img",
-  //     { autoAlpha: 0, scale: 0.35, borderRadius: '2em'},
-  //     { autoAlpha: 1, scale: 0.5, borderRadius: '2em', duration: 0.75, ease: "back.inOut(2)", }
-  //   )
-  //   .fromTo(
-  //     "#hero .bg img",
-  //     { scale: 0.5, borderRadius: '2em' },
-  //     { scale: 1, borderRadius: 0 , duration: 0.5 }
-  //   )
-  //   .addLabel("animateText")
-  //   .fromTo(
-  //     "#hero .utp h1",
-  //     { autoAlpha: 0, x: 20 },
-  //     { autoAlpha: 1, x: 0 }
-  //   )
-  //   .fromTo(
-  //     "#hero .utp .list",
-  //     { autoAlpha: 0, x: 20 },
-  //     { autoAlpha: 1, x: 0, delay: 0.2 },
-  //     "animateText"
-  //   )
-  //   .fromTo(
-  //     "#hero .form",
-  //     { autoAlpha: 0, x: 20 },
-  //     { autoAlpha: 1, x: 0, delay: 0.4 },
-  //     "animateText"
-  //   )
-  //   .fromTo(
-  //     "#hero .swiper-navigation",
-  //     { autoAlpha: 0 },
-  //     { autoAlpha: 1, delay: 0.6 },
-  //     "animateText"
-  //   )
-  //   .fromTo(
-  //     "#hero .hero-progress",
-  //     { autoAlpha: 0 },
-  //     { autoAlpha: 1, delay: 0.6 },
-  //     "animateText"
-  //   )
-  //   .addLabel("animateTransLine")
-  //   .fromTo(
-  //     "#hero .trans-time",
-  //     { autoAlpha: 0 },
-  //     { autoAlpha: 1 }
-  //   )
-  //   .fromTo(
-  //     "header.header .logo",
-  //     { autoAlpha: 0, y: 30 },
-  //     { autoAlpha: 1, y: 0 },
-  //     "animateTransLine"
-  //   )
-  //   .fromTo(
-  //     "header.header menu",
-  //     { autoAlpha: 0, y: 30 },
-  //     { autoAlpha: 1, y: 0, delay: 0.2 },
-  //     "animateTransLine"
-  //   )
-  //   .fromTo(
-  //     "header.header .buttons",
-  //     { autoAlpha: 0, y: 30 },
-  //     { autoAlpha: 1, y: 0, delay: 0.4 },
-  //     "animateTransLine"
-  //   );
-  //
-  // const aboutListItems = document.querySelectorAll('#about .right .item');
-  // const aboutListItemsNums = document.querySelectorAll('#about .right .item span span');
-  // let aboutAnimations = gsap.timeline({
-  //   scrollTrigger: {
-  //     trigger: "#about",
-  //     markers: false,
-  //     start: 'top center',
-  //     // end: 'bottom center',
-  //     pin: false,
-  //     // scrub: 2,
-  //     toggleActions: "play none none none", // играем один раз
-  //     once: true // альтернативно — сразу выключает откат
-  //   },
-  //   defaults: { ease: "power3.inOut" }
-  // });
-  //
-  // const svgGraph_piece = document.querySelectorAll('#about svg .piece');
-  // const svgGraph_percents = document.querySelectorAll('#about svg .percents');
-  // const svgGraph_line = document.querySelectorAll('#about svg .line');
-  // const svgGraph_dot = document.querySelectorAll('#about svg .dot');
-  // const svgGraph_name = document.querySelectorAll('#about svg .name');
-  //
-  // aboutAnimations.addLabel('startAbout')
-  //   .fromTo(
-  //     "#about .left .title h2",
-  //     { autoAlpha: 0, x: 20},
-  //     { autoAlpha: 1, x: 0},
-  //   )
-  //   .fromTo(
-  //     "#about .left .title h4",
-  //     { autoAlpha: 0, x: 20},
-  //     { autoAlpha: 1, x: 0, delay: 0.1 },
-  //     'startAbout'
-  //   )
-  //   .fromTo(
-  //     "#about .left .title p",
-  //     { autoAlpha: 0, x: 20 },
-  //     { autoAlpha: 1, x: 0, delay: 0.2 },
-  //     'startAbout'
-  //   )
-  //   .fromTo(
-  //     svgGraph_piece,
-  //     { autoAlpha: 0},
-  //     { autoAlpha: 1, duration: 0.5, delay: 0.1, stagger: 0.2 },
-  //     'startAbout'
-  //   )
-  //   .addLabel('graphComplete')
-  //   .fromTo(
-  //     svgGraph_percents,
-  //     { autoAlpha: 1, scale: 0},
-  //     { autoAlpha: 1, scale: 1, duration: 0.5, ease: "back.inOut(2)", delay: 0.1, stagger: 0.2 },
-  //   )
-  //   .fromTo(
-  //     svgGraph_line,
-  //     { autoAlpha: 0},
-  //     { autoAlpha: 1, duration: 0.5, ease: "back.inOut(2)", delay: 0.1, stagger: 0.2 },
-  //     'graphComplete'
-  //   )
-  //   .fromTo(
-  //     svgGraph_dot,
-  //     { autoAlpha: 0, scale: 0},
-  //     { autoAlpha: 1,scale: 1 , duration: 0.5, ease: "back.inOut(2)", delay: 0.2, stagger: 0.2 },
-  //     'graphComplete'
-  //   )
-  //   .fromTo(
-  //     svgGraph_name,
-  //     { autoAlpha: 0, scale: 0},
-  //     { autoAlpha: 1,scale: 1 , duration: 0.5, ease: "back.inOut(2)", delay: 0.4, stagger: 0.2 },
-  //     'graphComplete'
-  //   )
-  //   .fromTo(
-  //     aboutListItems,
-  //     { autoAlpha: 0, y: 20 },
-  //     { autoAlpha: 1, y: 0, delay: 0.1, stagger: 0.1 },
-  //     'startAbout'
-  //   )
-  //   .fromTo(
-  //     "#about .right .navigation",
-  //     { autoAlpha: 0 },
-  //     { autoAlpha: 1, delay: 0.5, stagger: 0.1 },
-  //     'startAbout'
-  //   )
-  //
-  // aboutListItemsNums.forEach(el => {
-  //   aboutAnimations.fromTo(
-  //     el,
-  //     { textContent: 0 },
-  //     {
-  //       textContent: el.textContent,
-  //       duration: 2,
-  //       snap: Number.isInteger(Number(el.textContent)) ? { textContent: 1 } : { textContent: 0.1 },
-  //     },
-  //     'startAbout' // все стартуют одновременно
-  //   );
-  // });
-  //
-  //
-  // const forBusinessItems = document.querySelectorAll('#you_business .you_business-list .item');
-  // let forBusinessAnimations = gsap.timeline({
-  //   scrollTrigger: {
-  //     trigger: "#you_business",
-  //     markers: false,
-  //     start: 'top center',
-  //     // end: 'bottom center',
-  //     pin: false,
-  //     // scrub: 2,
-  //     toggleActions: "play none none none", // играем один раз
-  //     once: true // альтернативно — сразу выключает откат
-  //   }
-  // })
-  //
-  // forBusinessAnimations.addLabel('startBusiness')
-  //   .fromTo(
-  //     "#you_business .title h2",
-  //     { autoAlpha: 0, x: 20},
-  //     { autoAlpha: 1, x: 0},
-  //   )
-  //   .fromTo(
-  //     forBusinessItems,
-  //     { autoAlpha: 0, y: 20 },
-  //     { autoAlpha: 1, y: 0, delay: 0.1, stagger: 0.1, },
-  //     'startBusiness'
-  //   )
-  //
-  //
-  // let mapAnimations = gsap.timeline({
-  //   scrollTrigger: {
-  //     trigger: "#map",
-  //     markers: false,
-  //     start: 'top center',
-  //     // end: 'bottom center',
-  //     pin: false,
-  //     // scrub: 2,
-  //     toggleActions: "play none none none", // играем один раз
-  //     once: true // альтернативно — сразу выключает откат
-  //   }
-  // })
-  //
-  // mapAnimations.addLabel('startMap')
-  //   .fromTo(
-  //     "#map .title h2",
-  //     { autoAlpha: 0, x: 20},
-  //     { autoAlpha: 1, x: 0},
-  //   )
-  //   .fromTo(
-  //     "#map img",
-  //     { autoAlpha: 0, scale: 0.9},
-  //     { autoAlpha: 1, scale: 1},
-  //   )
-  //
-  //
-  // const brandsListItems = document.querySelectorAll('#brands .item');
-  // let brandsAnimations = gsap.timeline({
-  //   scrollTrigger: {
-  //     trigger: "#brands",
-  //     markers: false,
-  //     start: 'top bottom',
-  //     // end: 'bottom center',
-  //     pin: false,
-  //     // scrub: 2,
-  //     toggleActions: "play none none none", // играем один раз
-  //     once: true // альтернативно — сразу выключает откат
-  //   },
-  //   defaults: { ease: "power3.inOut" }
-  // });
-  //
-  // brandsAnimations
-  //   .fromTo(
-  //     "#brands",
-  //     { width: 0 },
-  //     { width: '100%', delay: 0.5 },
-  //   )
-  //   .fromTo(
-  //     brandsListItems,
-  //     { autoAlpha: 0, scale: 0.5 },
-  //     { autoAlpha: 1, scale: 1, stagger: 0.1 },
-  //   )
-  //
-  //
-  // const excellenceListItems = document.querySelectorAll('#excellence .excellence-list .item');
-  // let excellenceAnimations = gsap.timeline({
-  //   scrollTrigger: {
-  //     trigger: "#excellence",
-  //     markers: false,
-  //     start: 'top center',
-  //     // end: 'bottom center',
-  //     pin: false,
-  //     // scrub: 2,
-  //     toggleActions: "play none none none", // играем один раз
-  //     once: true // альтернативно — сразу выключает откат
-  //   }
-  // })
-  //
-  // excellenceAnimations.addLabel('startExcellence')
-  //   .fromTo(
-  //     "#excellence .title h2",
-  //     { autoAlpha: 0, x: 20},
-  //     { autoAlpha: 1, x: 0},
-  //   )
-  //   .fromTo(
-  //     excellenceListItems,
-  //     { autoAlpha: 0, y: 20 },
-  //     { autoAlpha: 1, y: 0, delay: 0.1, stagger: 0.1, },
-  //     'startExcellence'
-  //   )
-  //
-  //
-  // const servicesListItems = document.querySelectorAll('#services .services-list .item');
-  // let servicesAnimations = gsap.timeline({
-  //   scrollTrigger: {
-  //     trigger: "#services",
-  //     markers: false,
-  //     start: 'top center',
-  //     // end: 'bottom center',
-  //     pin: false,
-  //     // scrub: 2,
-  //     toggleActions: "play none none none", // играем один раз
-  //     once: true // альтернативно — сразу выключает откат
-  //   }
-  // })
-  //
-  // servicesAnimations.addLabel('startServices')
-  //   .fromTo(
-  //     "#services .title h2",
-  //     { autoAlpha: 0, x: 20},
-  //     { autoAlpha: 1, x: 0},
-  //   )
-  //   .fromTo(
-  //     "#services .title p",
-  //     { autoAlpha: 0, x: 20 },
-  //     { autoAlpha: 1, x: 0, delay: 0.1 },
-  //     'startServices'
-  //   )
-  //   .fromTo(
-  //     servicesListItems,
-  //     { autoAlpha: 0, y: 20 },
-  //     { autoAlpha: 1, y: 0, delay: 0.1, stagger: 0.1, },
-  //     'startServices'
-  //   )
-  //
-  //
-  // const advantagesListItems = document.querySelectorAll('#advantages .advantages-list .item');
-  // let advantagesAnimations = gsap.timeline({
-  //   scrollTrigger: {
-  //     trigger: "#advantages",
-  //     markers: false,
-  //     start: 'top center',
-  //     // end: 'bottom center',
-  //     pin: false,
-  //     // scrub: 2,
-  //     toggleActions: "play none none none", // играем один раз
-  //     once: true // альтернативно — сразу выключает откат
-  //   }
-  // })
-  //
-  // advantagesAnimations.addLabel('startAdvantages')
-  //   .fromTo(
-  //     "#advantages .title h2",
-  //     { autoAlpha: 0, x: 20},
-  //     { autoAlpha: 1, x: 0},
-  //   )
-  //   .fromTo(
-  //     "#advantages .title p",
-  //     { autoAlpha: 0, x: 20 },
-  //     { autoAlpha: 1, x: 0, delay: 0.1 },
-  //     'startAdvantages'
-  //   )
-  //   .fromTo(
-  //     advantagesListItems,
-  //     { autoAlpha: 0, y: 20 },
-  //     { autoAlpha: 1, y: 0, delay: 0.1, stagger: 0.1, },
-  //     'startAdvantages'
-  //   )
-  //
-  //
-  // let consultationAnimations = gsap.timeline({
-  //   scrollTrigger: {
-  //     trigger: "#consultation",
-  //     markers: false,
-  //     start: 'top 70%',
-  //     // end: 'bottom bottom',
-  //     pin: false,
-  //     // scrub: 2,
-  //     toggleActions: "play none none none", // играем один раз
-  //     once: true // альтернативно — сразу выключает откат
-  //   }
-  // })
-  //
-  // consultationAnimations.addLabel('startConsultation')
-  //   .fromTo(
-  //     "#consultation .title h2",
-  //     { autoAlpha: 0, x: 20},
-  //     { autoAlpha: 1, x: 0},
-  //   )
-  //   .fromTo(
-  //     "#consultation .form",
-  //     { autoAlpha: 0, x: 20 },
-  //     { autoAlpha: 1, x: 0, delay: 0.1 },
-  //     'startConsultation'
-  //   )
-  //   .fromTo(
-  //     "#consultation .Denis",
-  //     { autoAlpha: 0, x: 20 },
-  //     { autoAlpha: 1, x: 0, delay: 0.1 },
-  //     'startConsultation'
-  //   )
-  //
-  //
-  // const footerListItems = document.querySelectorAll('#footer .list .item');
-  // let footerAnimations = gsap.timeline({
-  //   scrollTrigger: {
-  //     trigger: "#footer",
-  //     markers: false,
-  //     start: 'center bottom',
-  //     // end: 'bottom bottom',
-  //     pin: false,
-  //     // scrub: 2,
-  //     toggleActions: "play none none none", // играем один раз
-  //     once: true // альтернативно — сразу выключает откат
-  //   }
-  // })
-  //
-  // footerAnimations.addLabel('startFooter')
-  //   .fromTo(
-  //     "footer .head",
-  //     { autoAlpha: 0, x: 20},
-  //     { autoAlpha: 1, x: 0},
-  //   )
-  //   .fromTo(
-  //     footerListItems,
-  //     { autoAlpha: 0, y: 20 },
-  //     { autoAlpha: 1, y: 0, delay: 0.2, stagger: 0.1, },
-  //     'startFooter'
-  //   )
+  let storyAnimations = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#story",
+      markers: false,
+      start: 'center bottom',
+      pin: false,
+      toggleActions: "play none none none",
+      once: true
+    },
+    defaults: { ease: "power3.inOut" }
+  });
+
+  storyAnimations.addLabel('start')
+    .fromTo(
+      "#story",
+      { opacity: 0, yPercent: 20},
+      { opacity: 1, yPercent: 0},
+    )
+
+
+  let clientsAnimations = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#clients",
+      markers: false,
+      start: 'center bottom',
+      pin: false,
+      toggleActions: "play none none none",
+      once: true
+    },
+    defaults: { ease: "power3.inOut" }
+  });
+
+  clientsAnimations.addLabel('start')
+    .fromTo(
+      "#clients",
+      { opacity: 0, yPercent: 20},
+      { opacity: 1, yPercent: 0},
+    )
+
+
+  let partnersAnimations = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#partners",
+      markers: false,
+      start: 'center bottom',
+      pin: false,
+      toggleActions: "play none none none",
+      once: true
+    },
+    defaults: { ease: "power3.inOut" }
+  });
+
+  partnersAnimations.addLabel('start')
+    .fromTo(
+      "#partners",
+      { opacity: 0, yPercent: 20},
+      { opacity: 1, yPercent: 0},
+    )
+
+
+  let callbackOrderAnimations = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#callbackOrder",
+      markers: false,
+      start: 'center bottom',
+      pin: false,
+      toggleActions: "play none none none",
+      once: true,
+    },
+    defaults: { ease: "power3.inOut" }
+  });
+
+  callbackOrderAnimations.addLabel('start')
+    .fromTo(
+      "#callbackOrder",
+      { opacity: 0, yPercent: 20},
+      { opacity: 1, yPercent: 0},
+    )
 
 }
