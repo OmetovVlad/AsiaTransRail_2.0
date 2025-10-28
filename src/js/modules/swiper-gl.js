@@ -4657,7 +4657,9 @@ function getGeometry(gl, detail, offsetTop) {
 
 const PI = `float PI = 3.141592653589793238;`;
 const fragmentCommon = /* glsl */ `
+#ifdef GL_OES_standard_derivatives
 #extension GL_OES_standard_derivatives : enable
+#endif
 precision highp float;
 
 uniform float time;

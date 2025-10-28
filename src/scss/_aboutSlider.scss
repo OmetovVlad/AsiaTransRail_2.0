@@ -41,6 +41,23 @@
         left: 0;
       }
 
+      .current_slide {
+        width: auto;
+        pointer-events: none;
+        .swiper-pagination-bullet {
+          display: none;
+          opacity: 1;
+          width: auto;
+          height: 100%;
+          background: transparent;
+          margin: 0;
+
+          &-active {
+            display: block;
+          }
+        }
+      }
+
       span {
         font-weight: 500;
         letter-spacing: -0.0285714285714286rem;
@@ -58,7 +75,9 @@
         }
 
         &-progressbar-fill {
+          display: block;
           background: #4C5866;
+          height: 0.0714285714285714rem;
         }
       }
     }

@@ -37,76 +37,52 @@ const smoother = ScrollSmoother.create({
   effects: true, // можно использовать data-speed/data-lag для эффектов параллакса
 });
 
-const header = document.querySelector("header.header");
-
-let lastY = window.scrollY;
-let headerHidden = false;
-let isFixed = false;
-let ticking = false;
-
-// переключаем в fixed только после 100svh — до этого header остаётся неизменным
-ScrollTrigger.create({
-  trigger: document.body,
-  start: "100svh top",
-  onEnter: () => {
-    headerHidden = true;
-    isFixed = true;
-  },
-  onLeaveBack: () => {
-    headerHidden = false;
-    isFixed = false;
-  }
-});
-
-// отслеживаем направление скролла — управляем только когда header fixed
-window.addEventListener("scroll", () => {
-  if (!ticking) {
-    requestAnimationFrame(() => {
-      const y = window.scrollY;
-      if (isFixed) {
-        const delta = y - lastY;
-        if (delta > 5) { // скролл вниз
-          if (!headerHidden) {
-            gsap.to(header, { y: "-100%", duration: 0.28, ease: "power2.out" });
-            headerHidden = true;
-          }
-        } else if (delta < -5) { // скролл вверх
-          if (headerHidden) {
-            gsap.to(header, { y: "0%", duration: 0.28, ease: "power2.out" });
-            headerHidden = false;
-          }
-        }
-      }
-      lastY = y;
-      ticking = false;
-    });
-    ticking = true;
-  }
-}, { passive: true });
-
-// const marquee = document.querySelector(".trans-time .marquee");
-// const content = marquee.innerHTML;
-// marquee.innerHTML += content;
-// gsap.to(
-//   marquee,
-//   {
-//     x: `-${marquee.scrollWidth / 2}px`,
-//     ease: "none",
-//     duration: 25, // скорость
-//     repeat: -1
-//   })
+// const header = document.querySelector("header.header");
 //
-// const marqueeBrands = document.querySelector("#brands .marquee");
-// const contentBrands = marqueeBrands.innerHTML;
-// marqueeBrands.innerHTML += contentBrands;
-// gsap.to(
-//   marqueeBrands,
-//   {
-//     x: `-${marqueeBrands.scrollWidth / 2}px`,
-//     ease: "none",
-//     duration: 15,
-//     repeat: -1
-//   })
+// let lastY = window.scrollY;
+// let headerHidden = false;
+// let isFixed = false;
+// let ticking = false;
+//
+// // переключаем в fixed только после 100svh — до этого header остаётся неизменным
+// ScrollTrigger.create({
+//   trigger: document.body,
+//   start: "100svh top",
+//   onEnter: () => {
+//     headerHidden = true;
+//     isFixed = true;
+//   },
+//   onLeaveBack: () => {
+//     headerHidden = false;
+//     isFixed = false;
+//   }
+// });
+
+// // отслеживаем направление скролла — управляем только когда header fixed
+// window.addEventListener("scroll", () => {
+//   if (!ticking) {
+//     requestAnimationFrame(() => {
+//       const y = window.scrollY;
+//       if (isFixed) {
+//         const delta = y - lastY;
+//         if (delta > 5) { // скролл вниз
+//           if (!headerHidden) {
+//             gsap.to(header, { y: "-100%", duration: 0.28, ease: "power2.out" });
+//             headerHidden = true;
+//           }
+//         } else if (delta < -5) { // скролл вверх
+//           if (headerHidden) {
+//             gsap.to(header, { y: "0%", duration: 0.28, ease: "power2.out" });
+//             headerHidden = false;
+//           }
+//         }
+//       }
+//       lastY = y;
+//       ticking = false;
+//     });
+//     ticking = true;
+//   }
+// }, { passive: true });
 
 if ( document.documentElement.classList.contains('_pc') ) {
 
@@ -283,123 +259,29 @@ if ( document.documentElement.classList.contains('_pc') ) {
       "endDotsAnimation"
     )
 
-  let aboutSliderAnimations = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#aboutSlider",
-      markers: false,
-      start: 'top center',
-      pin: false,
-      toggleActions: "play none none none",
-      once: true
-    },
-    defaults: { ease: "power3.inOut" }
-  });
 
-  aboutSliderAnimations.addLabel('startSliderAbout')
-    .fromTo(
-      "#aboutSlider",
-      { opacity: 0, yPercent: 20},
-      { opacity: 1, yPercent: 0},
-    )
+  function animateBlock(selector) {
+    const el = document.querySelector(selector);
+    if (!el) return;
 
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: el,
+        start: 'center bottom',
+        toggleActions: "play none none none",
+        once: true
+      },
+      defaults: { ease: "power3.inOut" }
+    });
 
-  let aboutAnimations = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#aboutCompany",
-      markers: false,
-      start: 'center bottom',
-      pin: false,
-      toggleActions: "play none none none",
-      once: true
-    },
-    defaults: { ease: "power3.inOut" }
-  });
+    tl.fromTo(el, { opacity: 0, yPercent: 20 }, { opacity: 1, yPercent: 0 });
+  }
 
-  aboutAnimations.addLabel('start')
-    .fromTo(
-      "#aboutCompany",
-      { opacity: 0, yPercent: 20},
-      { opacity: 1, yPercent: 0},
-    )
-
-
-  let storyAnimations = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#story",
-      markers: false,
-      start: 'center bottom',
-      pin: false,
-      toggleActions: "play none none none",
-      once: true
-    },
-    defaults: { ease: "power3.inOut" }
-  });
-
-  storyAnimations.addLabel('start')
-    .fromTo(
-      "#story",
-      { opacity: 0, yPercent: 20},
-      { opacity: 1, yPercent: 0},
-    )
-
-
-  let clientsAnimations = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#clients",
-      markers: false,
-      start: 'center bottom',
-      pin: false,
-      toggleActions: "play none none none",
-      once: true
-    },
-    defaults: { ease: "power3.inOut" }
-  });
-
-  clientsAnimations.addLabel('start')
-    .fromTo(
-      "#clients",
-      { opacity: 0, yPercent: 20},
-      { opacity: 1, yPercent: 0},
-    )
-
-
-  let partnersAnimations = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#partners",
-      markers: false,
-      start: 'center bottom',
-      pin: false,
-      toggleActions: "play none none none",
-      once: true
-    },
-    defaults: { ease: "power3.inOut" }
-  });
-
-  partnersAnimations.addLabel('start')
-    .fromTo(
-      "#partners",
-      { opacity: 0, yPercent: 20},
-      { opacity: 1, yPercent: 0},
-    )
-
-
-  let callbackOrderAnimations = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#callbackOrder",
-      markers: false,
-      start: 'center bottom',
-      pin: false,
-      toggleActions: "play none none none",
-      once: true,
-    },
-    defaults: { ease: "power3.inOut" }
-  });
-
-  callbackOrderAnimations.addLabel('start')
-    .fromTo(
-      "#callbackOrder",
-      { opacity: 0, yPercent: 20},
-      { opacity: 1, yPercent: 0},
-    )
+  animateBlock("#aboutSlider");
+  animateBlock("#aboutCompany");
+  animateBlock("#story");
+  animateBlock("#clients");
+  animateBlock("#partners");
+  animateBlock("#callbackOrder");
 
 }

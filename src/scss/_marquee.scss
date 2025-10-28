@@ -31,6 +31,15 @@
       object-fit: contain;
       object-position: center;
     }
+
+    @media (min-width: 768px) {
+      filter: grayscale(1);
+      transition: all 0.2s;
+
+      &:hover {
+        filter: grayscale(0);
+      }
+    }
   }
 }
 
@@ -76,5 +85,11 @@
     to {
       transform: translateX(calc(-100% - 2.285714285714286rem));
     }
+  }
+}
+
+@media (min-width: 768px) {
+  .marquee:hover .marquee__group {
+    animation-play-state: paused;
   }
 }

@@ -31,7 +31,7 @@
       display: block;
       padding: 1rem;
       border: none;
-      border-radius: 0.5714285714285714em;
+      border-radius: 0.5714285714285714em!important;
       transition: all 0.2s ease-in-out;
 
       &.invalid{
@@ -39,6 +39,7 @@
       }
 
       @media (max-width: 768px) {
+        flex: 1;
         line-height: 1rem;
         padding: 0.7142857142857143rem 1.142857142857143rem;
       }
@@ -47,8 +48,10 @@
     button {
       display: block;
       width: 14.57142857142857rem;
+      border-radius: 0.5714285714285714em!important;
 
       @media (max-width: 768px) {
+        flex: 0 0 2.857142857142857rem;
         width: 2.857142857142857rem;
       }
 

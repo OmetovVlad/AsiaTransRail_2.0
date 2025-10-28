@@ -20,6 +20,7 @@
   },
   "homepage": "",
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.2.3",
     "chart.js": "^4.5.1",
     "connect-modrewrite": "^0.10.2",

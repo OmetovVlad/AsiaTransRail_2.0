@@ -1,7 +1,7 @@
 // Normalize.css
 @import '../../node_modules/normalize.css/normalize';
 // Bootstrap
-@import '../../node_modules/bootstrap/scss/bootstrap-grid';
+@import '../../node_modules/bootstrap/scss/bootstrap';
 
 // Шрифты
 // Удалить файл fonts.scss, если произошли какие-то изменения со шрифтами
@@ -25,6 +25,8 @@
 @import 'partners';
 @import 'callbackOrder';
 @import 'youCompany';
+@import 'youGet';
+@import '1day';
 @import 'footer';
 
 * {
