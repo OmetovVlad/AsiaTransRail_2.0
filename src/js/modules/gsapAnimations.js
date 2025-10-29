@@ -277,11 +277,12 @@ if ( document.documentElement.classList.contains('_pc') ) {
     tl.fromTo(el, { opacity: 0, yPercent: 20 }, { opacity: 1, yPercent: 0 });
   }
 
-  animateBlock("#aboutSlider");
-  animateBlock("#aboutCompany");
-  animateBlock("#story");
-  animateBlock("#clients");
-  animateBlock("#partners");
-  animateBlock("#callbackOrder");
-
+  window.addEventListener('load', () => {
+    animateBlock("#aboutSlider");
+    animateBlock("#aboutCompany");
+    animateBlock("#story");
+    animateBlock("#clients");
+    animateBlock("#partners");
+    animateBlock("#callbackOrder");
+  });
 }

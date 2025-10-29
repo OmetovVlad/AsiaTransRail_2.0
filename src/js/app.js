@@ -5,6 +5,8 @@ import Swiper from 'swiper';
 import SwiperGL from './modules/swiper-gl.js';
 import {Navigation, EffectFade, EffectCreative, Controller, Pagination, Autoplay} from 'swiper/modules';
 
+import './modules/treeSwiper.js';
+
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger.js";
 
@@ -140,18 +142,14 @@ const storySlider = new Swiper(".storySlider", {
 
 const progressBar1Day = document.querySelector('#day1 .swiper-pagination span');
 const day1Slider = new Swiper('#day1 .day1Slider', {
-  modules: [Navigation, Controller, Autoplay],
+  modules: [Navigation, Controller],
   slidesPerView: 1,
   speed: 500,
   loop: false,
   spaceBetween: remToPx(1.1428571429),
   pagination: {
-    el: '#day1 .pagination .current_slide',
-    clickable: true,
-    renderBullet: function (index, className) {
-      const num = (index + 1).toString().padStart(2, '0');
-      return `<span class="${className}">(${num})</span>`;
-    },
+    el: "#day1 .swiper-pagination",
+    type: "progressbar",
   },
   breakpoints: {
     768: {
@@ -160,22 +158,20 @@ const day1Slider = new Swiper('#day1 .day1Slider', {
     }
   },
   on: {
-    autoplayTimeLeft(s, time, progress) {
-      progressBar1Day.style.width = `${(1 - progress) * 100}%`;
+    init: function() {
+      updateCurrentSlide(this);
+    },
+    slideChange: function() {
+      updateCurrentSlide(this);
     }
-  }
+  },
 });
 
-day1Slider.params.autoplay = {
-  delay: 5000,
-  disableOnInteraction: false,
-};
+function updateCurrentSlide(swiper) {
+  const current = swiper.realIndex + 1; // Номер активного слайда
+  const formatted = current.toString().padStart(2, '0'); // Преобразуем в формат 01, 02, ...
+  document.querySelector('#day1 .current_slide').textContent = `(${formatted})`;
+}
 
-// Включаем autoplay, когда дошли до блока
-ScrollTrigger.create({
-  trigger: "#day1",
-  start: "top center",
-  onEnter: () => day1Slider.autoplay.start(),
-  onLeave: () => day1Slider.autoplay.stop(),
-  onLeaveBack: () => day1Slider.autoplay.stop(), // если хочешь, чтобы останавливался при прокрутке вверх
-});
+const total = day1Slider.slides.length; // если loop = false, можно просто swiper.slides.length
+document.querySelector('#day1 .total').textContent = `(${total.toString().padStart(2, '0')})`;
