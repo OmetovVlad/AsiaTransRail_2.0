@@ -6,11 +6,15 @@
         </div>
 
         <div class="form">
-            <form action="">
+
+            <form class="needs-validation" novalidate>
 
                 <div class="line">
                     <div class="input-group">
-                        <input name="phone" type="text" placeholder="Номер телефона" class="phone">
+                        <input name="phone" type="text" placeholder="Номер телефона" class="phone" maxlength="18" minlength="18" required>
+                        <div class="invalid-feedback">
+                            Введите корректный номер телефона
+                        </div>
 
                         <button class="button" type="submit">
                             <span>Оставить заявку</span>
@@ -20,13 +24,13 @@
                 </div>
 
                 <div class="approve">
-                    <label>
-                        <input type="checkbox" name="isagree">
-                        <span>Даю <a href="/consent-personal-data.pdf" target="_blank">согласие на обработку моих персональных данных</a> в соответствии <br>с <a href="/privacy.pdf" target="_blank">политикой конфиденциальности</a></span>
+                    <label class="form-check">
+                        <input type="checkbox" name="isagree" required>
+                        <span>Даю <a href="/consent-personal-data.pdf" target="_blank">согласие на обработку моих персональных данных</a> в соответствии с <a href="/privacy.pdf" target="_blank">политикой конфиденциальности</a></span>
                     </label>
                 </div>
-
             </form>
+
         </div>
 
         <div class="name">

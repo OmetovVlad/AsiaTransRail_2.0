@@ -28,6 +28,7 @@
 @import 'youGet';
 @import '1day';
 @import 'footer';
+@import 'modal';
 
 * {
   outline: none;
@@ -179,5 +180,71 @@ body {
 
   &--white {
     color: #FFFFFF;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.714285714285714rem;
+
+  @media (max-width: 768px) {
+    gap: 1.142857142857143rem;
+  }
+
+  input, textarea {
+    width: 100%;
+    background: #FAFAFA;
+    border: none;
+    border-radius: 0.5714285714285714rem;
+    font-size: 1rem;
+    line-height: 1.428571428571429rem;
+    padding: 1rem;
+    resize: none;
+
+    @media (max-width: 768px) {
+      border-radius: 0.5714285714285714rem;
+      padding: 0.7142857142857143rem 1.142857142857143rem;
+    }
+
+    &::placeholder {
+      color: #BBBBB7;
+      @media (max-width: 768px) {
+        color: #4C5866;
+      }
+    }
+  }
+
+  &.was-validated .approve input:invalid + span {
+    color: #E9492C;
+
+    &:before {
+      border: 0.0714285714285714rem solid #E9492C;
+    }
+
+    a {
+      color: #E9492C;
+    }
+  }
+
+  textarea {
+    height: 9.142857142857143rem;
+  }
+
+  .form-check {
+    border: none;
+    padding-left: 0;
+  }
+
+  .invalid-feedback {
+    color: #E9492C;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  &.was-validated input[type='text']:invalid {
+    background: #ffefec;
   }
 }

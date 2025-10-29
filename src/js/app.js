@@ -12,18 +12,19 @@ import './modules/phoneInputMask.js';
 import './modules/gsapAnimations.js';
 
 import './modules/chart.js';
+import './modules/form.js';
 
 functions.isWebp();
 gsap.registerPlugin(ScrollTrigger);
 
-const phoneInputs = document.querySelectorAll('.phone');
-const maskOptions = {
-  mask: '+{7} (000) 000-00-00'
-};
-
-phoneInputs.forEach((phoneInput) => {
-  const mask = IMask(phoneInput, maskOptions);
-})
+// const phoneInputs = document.querySelectorAll('.phone');
+// const maskOptions = {
+//   mask: '+{7} (000) 000-00-00'
+// };
+//
+// phoneInputs.forEach((phoneInput) => {
+//   const mask = IMask(phoneInput, maskOptions);
+// })
 
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.querySelector('.open_menu');
