@@ -1,0 +1,191 @@
+#tariffs {
+  position: relative;
+  padding: 8.571428571428571rem 0 5.714285714285714rem;
+  background: #4C5866;
+  border-radius: 1.142857142857143rem;
+  overflow: hidden;
+
+  @media (max-width: 767px) {
+    padding: 2.285714285714286rem 0 3.714285714285714rem;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: -50%;
+    background: rgba(215, 215, 215, 10.05);
+    background: linear-gradient(180deg, rgba(215, 215, 215, 0.25) 0%, rgba(46, 58, 72, 0.32) 37%, rgba(233, 73, 44, 0.7) 100%);
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .table_line {
+    margin-top: 8.571428571428571rem;
+
+    @media (max-width: 767px) {
+      overflow: auto;
+      margin: 4.571428571428571rem -1.142857142857143rem 0;
+    }
+
+    .table {
+      border-radius: 1.142857142857143rem;
+      overflow: hidden;
+      background: #FFFFFF;
+
+      @media (max-width: 767px) {
+        margin-left: 1.142857142857143rem;
+        margin-right: 1.142857142857143rem;
+      }
+
+      * {
+        box-shadow: none;
+      }
+
+      & > :not(caption)> * > * {
+        border-color: #D7D7D7;
+      }
+
+      &.table-hover>tbody>tr:hover>* {
+        background: #F4F3FF;
+      }
+
+      &.table-hover>tbody>tr:hover {
+        th {
+          span {
+            color: #000000;
+          }
+        }
+      }
+
+      th, td {
+        border-bottom: 0;
+        font-weight: 400;
+        font-size: 1.285714285714286rem;
+        line-height: 2.142857142857143rem;
+        letter-spacing: -0.0571428571428571rem;
+        color: #4C5866;
+
+        @media (max-width: 767px) {
+          font-size: 1rem;
+          line-height: 1.428571428571429rem;
+          letter-spacing: -0.0285714285714286rem;
+        }
+      }
+
+      tbody {
+        tr {
+          border-top: 1px solid #D7D7D7;
+
+          th {
+            span {
+              display: flex;
+              align-items: center;
+              gap: 0.2857142857142857rem;
+
+              &:before {
+                content: '';
+                display: block;
+                width: 0.4285714285714286rem;
+                height: 0.4285714285714286rem;
+                background: black;
+                border-radius: 50%;
+              }
+            }
+          }
+        }
+      }
+
+      tr {
+
+        & > * {
+          white-space: nowrap;
+          &:first-child {
+            width: 24.42857142857143rem;
+            padding: 1.714285714285714rem 3.428571428571429rem;
+
+            @media (max-width: 767px) {
+              width: 16.57142857142857rem;
+              padding: 1.142857142857143rem;
+            }
+          }
+          &:nth-child(2) {
+            width: 24.57142857142857rem;
+            padding: 1.714285714285714rem 0;
+
+            @media (max-width: 767px) {
+              width: 9.428571428571429rem;
+              padding: 1.142857142857143rem;
+            }
+          }
+          &:nth-child(3) {
+            width: 36.42857142857143rem;
+            padding: 1.714285714285714rem 0;
+
+            @media (max-width: 767px) {
+              width: 17.35714285714286rem;
+              padding: 1.142857142857143rem;
+            }
+          }
+          &:nth-child(4) {
+            width: 10.57142857142857rem;
+            padding: 1.714285714285714rem 3.428571428571429rem 1.714285714285714rem 0;
+
+            @media (max-width: 767px) {
+              width: 8.214285714285714rem;
+              padding: 1.142857142857143rem;
+            }
+          }
+        }
+
+        &.avia {
+
+          th span:before {
+            background-color: #6366F1;
+          }
+
+          td {
+            color: #6366F1;
+          }
+          & + .avia {
+            border-top: 0;
+          }
+        }
+        &.train {
+
+          th span:before {
+            background-color: #EC4899;
+          }
+
+          td {
+            color: #EC4899;
+          }
+          & + .train {
+            border-top: 0;
+          }
+        }
+        &.ship {
+
+          th span:before {
+            background-color: #3B82F6;
+          }
+
+          td {
+            color: #3B82F6;
+          }
+          & + .ship {
+            border-top: 0;
+          }
+        }
+      }
+
+    }
+  }
+}

@@ -20,14 +20,24 @@ import { Modal } from 'bootstrap';
           currentModal.hide();
         }
 
+        fetch("/lead_form_phone.php", {
+          method: "POST",
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(data)
+        }).then(data => {
+          // Очистим форму после отправки
+          form.reset();
+          form.classList.remove('was-validated');
+        })
+        .catch(err => {
+          console.error("Ошибка при отправке формы:", err);
+        });
+
         // Открываем модалку успеха
         const successModalEl = document.getElementById('successModal');
         const successModal = new Modal(successModalEl);
         successModal.show();
 
-        // Очистим форму после отправки
-        form.reset();
-        form.classList.remove('was-validated');
       } else {
         form.classList.add('was-validated');
       }
