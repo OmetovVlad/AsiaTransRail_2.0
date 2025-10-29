@@ -6,9 +6,135 @@
             <span>Главное в бизнесе — люди</span>
         </div>
 
-        <div class="table_line">
+        <div class="routes__controls">
 
-            <table class="table table-hover">
+            <div class="routes__select">
+                <label for="fromSelect">Откуда:</label>
+                <select id="fromSelect" name="from">
+                    <option value="Шанхай" selected>Шанхай</option>
+                    <option value="Маньчжурия">Маньчжурия</option>
+                    <option value="Дуннин">Дуннин</option>
+                    <option value="Хэйхэ">Хэйхэ</option>
+                    <option value="Чэнду">Чэнду</option>
+                    <option value="Пекин">Пекин</option>
+                    <option value="Харбин">Харбин</option>
+                    <option value="Нинбо">Нинбо</option>
+                    <option value="Циндао">Циндао</option>
+                    <option value="Сямынь">Сямынь</option>
+                    <option value="Тяньцзинь">Тяньцзинь</option>
+                    <option value="Шэньчжэнь">Шэньчжэнь</option>
+                    <option value="Наньша">Наньша</option>
+                    <option value="Варшава">Варшава</option>
+                    <option value="Вильнюс">Вильнюс</option>
+                    <option value="Берлин">Берлин</option>
+                    <option value="Милан">Милан</option>
+                </select>
+            </div>
+
+            <!-- 🔹 Блок со всеми селектами "куда" (по каждому городу "откуда") -->
+            <div class="routes__selects-group">
+
+                <div class="routes__select active" id="Шанхай">
+                    <label>Куда:</label>
+                    <select>
+                        <option value="Маньчжурия" selected>Маньчжурия</option>
+                        <option value="Москва">Москва</option>
+                        <option value="Новороссийск">Новороссийск</option>
+                        <option value="Санкт-Петербург">Санкт-Петербург</option>
+                    </select>
+                </div>
+
+                <div class="routes__select" id="Маньчжурия">
+                    <label>Куда:</label>
+                    <select>
+                        <option value="Москва">Москва</option>
+                    </select>
+                </div>
+
+                <div class="routes__select" id="Дуннин">
+                    <label>Куда:</label>
+                    <select>
+                        <option value="Москва">Москва</option>
+                    </select>
+                </div>
+
+                <div class="routes__select" id="Хэйхэ">
+                    <label>Куда:</label>
+                    <select>
+                        <option value="Москва">Москва</option>
+                    </select>
+                </div>
+
+                <div class="routes__select" id="Нинбо">
+                    <label>Куда:</label>
+                    <select>
+                        <option value="Москва">Москва</option>
+                        <option value="Новороссийск">Новороссийск</option>
+                        <option value="Санкт-Петербург">Санкт-Петербург</option>
+                    </select>
+                </div>
+
+                <div class="routes__select" id="Циндао">
+                    <label>Куда:</label>
+                    <select>
+                        <option value="Москва">Москва</option>
+                        <option value="Новороссийск">Новороссийск</option>
+                        <option value="Санкт-Петербург">Санкт-Петербург</option>
+                    </select>
+                </div>
+
+                <div class="routes__select" id="Сямынь">
+                    <label>Куда:</label>
+                    <select>
+                        <option value="Москва">Москва</option>
+                        <option value="Новороссийск">Новороссийск</option>
+                        <option value="Санкт-Петербург">Санкт-Петербург</option>
+                    </select>
+                </div>
+
+                <div class="routes__select" id="Наньша">
+                    <label>Куда:</label>
+                    <select>
+                        <option value="Москва">Москва</option>
+                        <option value="Новороссийск">Новороссийск</option>
+                        <option value="Санкт-Петербург">Санкт-Петербург</option>
+                    </select>
+                </div>
+
+                <div class="routes__select" id="Варшава">
+                    <label>Куда:</label>
+                    <select>
+                        <option value="Москва">Москва</option>
+                    </select>
+                </div>
+
+                <div class="routes__select" id="Вильнюс">
+                    <label>Куда:</label>
+                    <select>
+                        <option value="Москва">Москва</option>
+                    </select>
+                </div>
+
+                <div class="routes__select" id="Берлин">
+                    <label>Куда:</label>
+                    <select>
+                        <option value="Москва">Москва</option>
+                    </select>
+                </div>
+
+                <div class="routes__select" id="Милан">
+                    <label>Куда:</label>
+                    <select>
+                        <option value="Москва">Москва</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="routes__tables">
+
+            <table class="table table-hover" id="Шанхай_Москва">
                 <thead>
                 <tr>
                     <th scope="col">Тип перевозки</th>
@@ -54,4 +180,5 @@
         </div>
 
     </div>
+
 </section>

@@ -15,6 +15,7 @@ import './modules/gsapAnimations.js';
 
 import './modules/chart.js';
 import './modules/form.js';
+import './modules/tariffs.js';
 
 functions.isWebp();
 gsap.registerPlugin(ScrollTrigger);
