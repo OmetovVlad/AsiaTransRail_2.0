@@ -294,18 +294,35 @@ if ( document.documentElement.classList.contains('_pc') ) {
     tl.fromTo(el, { opacity: 0, yPercent: 20 }, { opacity: 1, yPercent: 0 });
   }
 
+  function animateBlockTop(selector) {
+    const el = document.querySelector(selector);
+    if (!el) return;
+
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: el,
+        start: 'top bottom',
+        toggleActions: "play none none none",
+        once: true
+      },
+      defaults: { ease: "power3.inOut" }
+    });
+
+    tl.fromTo(el, { opacity: 0, yPercent: 20 }, { opacity: 1, yPercent: 0 });
+  }
+
   window.addEventListener('load', () => {
-    animateBlock("#aboutSlider");
-    animateBlock("#aboutCompany");
-    animateBlock("#story");
-    animateBlock("#tariffs");
-    animateBlock("#clients");
-    animateBlock("#partners");
-    animateBlock("#callbackOrder");
-    animateBlock("#services");
-    animateBlock("#youCompany");
-    animateBlock("#youGet");
-    animateBlock("#day1");
+    animateBlockTop("#aboutSlider");
+    animateBlockTop("#aboutCompany");
+    animateBlockTop("#story");
+    animateBlockTop("#tariffs");
+    animateBlockTop("#clients");
+    animateBlockTop("#partners");
+    animateBlockTop("#callbackOrder");
+    animateBlockTop("#services");
+    animateBlockTop("#youCompany");
+    animateBlockTop("#youGet");
+    animateBlockTop("#day1");
     animateBlockBottom("#footer");
   });
 

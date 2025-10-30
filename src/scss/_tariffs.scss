@@ -108,14 +108,50 @@
       overflow: hidden;
       background: #FFFFFF;
       display: none;
+      table-layout: fixed;
 
       @media (max-width: 767px) {
         margin-left: 1.142857142857143rem;
         margin-right: 1.142857142857143rem;
       }
 
+      colgroup {
+        & > *:first-child {
+          //width: 24.42857142857143rem;
+          width: 25%;
+
+          @media (max-width: 767px) {
+            width: 16.57142857142857rem;
+          }
+        }
+        & > *:nth-child(2) {
+          //width: 24.57142857142857rem;
+          width: 25%;
+
+          @media (max-width: 767px) {
+            width: 9.428571428571429rem;
+          }
+        }
+        & > *:nth-child(3) {
+          //width: 36.42857142857143rem;
+          width: 36%;
+
+          @media (max-width: 767px) {
+            width: 17.35714285714286rem;
+          }
+        }
+        & > *:nth-child(4) {
+          //width: 12.14285714285714rem;
+          width: 14%;
+
+          @media (max-width: 767px) {
+            width: 8.214285714285714rem;
+          }
+        }
+      }
+
       &.active {
-        display: block;
+        display: table;
       }
 
       * {
@@ -181,38 +217,30 @@
         & > * {
           white-space: nowrap;
           &:first-child {
-            width: 24.42857142857143rem;
             padding: 1.714285714285714rem 3.428571428571429rem;
 
             @media (max-width: 767px) {
-              width: 16.57142857142857rem;
               padding: 1.142857142857143rem;
             }
           }
           &:nth-child(2) {
-            width: 24.57142857142857rem;
             padding: 1.714285714285714rem 0;
 
             @media (max-width: 767px) {
-              width: 9.428571428571429rem;
               padding: 1.142857142857143rem;
             }
           }
           &:nth-child(3) {
-            width: 36.42857142857143rem;
             padding: 1.714285714285714rem 0;
 
             @media (max-width: 767px) {
-              width: 17.35714285714286rem;
               padding: 1.142857142857143rem;
             }
           }
           &:nth-child(4) {
-            width: 10.57142857142857rem;
             padding: 1.714285714285714rem 3.428571428571429rem 1.714285714285714rem 0;
 
             @media (max-width: 767px) {
-              width: 8.214285714285714rem;
               padding: 1.142857142857143rem;
             }
           }
