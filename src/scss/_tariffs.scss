@@ -107,10 +107,15 @@
       border-radius: 1.142857142857143rem;
       overflow: hidden;
       background: #FFFFFF;
+      display: none;
 
       @media (max-width: 767px) {
         margin-left: 1.142857142857143rem;
         margin-right: 1.142857142857143rem;
+      }
+
+      &.active {
+        display: block;
       }
 
       * {
@@ -213,6 +218,19 @@
           }
         }
 
+        &.avto {
+
+          th span:before {
+            background-color: #14b8a6;
+          }
+
+          td {
+            color: #14b8a6;
+          }
+          & + .avia {
+            border-top: 0;
+          }
+        }
         &.avia {
 
           th span:before {

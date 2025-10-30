@@ -9,6 +9,8 @@ showTable(currentFrom, currentTo);
 
 // показываем нужный селект "куда"
 fromSelect.addEventListener('change', e => {
+  hideAllTables();
+
   currentFrom = e.target.value;
 
   // скрываем все селекты "куда"
@@ -28,7 +30,6 @@ fromSelect.addEventListener('change', e => {
     }
   }
 
-  hideAllTables();
 });
 
 // выбираем "куда"
@@ -45,10 +46,13 @@ function hideAllTables() {
 
 function showTable(from, to) {
   hideAllTables();
+
   if (from && to) {
     const tableId = `${from}_${to}`;
     const table = document.getElementById(tableId);
 
-    if (table) table.classList.add('active');
+    if (table) {
+      table.classList.add('active');
+    }
   }
 }

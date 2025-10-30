@@ -176,3 +176,32 @@ function updateCurrentSlide(swiper) {
 
 const total = day1Slider.slides.length; // если loop = false, можно просто swiper.slides.length
 document.querySelector('#day1 .total').textContent = `(${total.toString().padStart(2, '0')})`;
+
+const blocks = document.querySelectorAll('.info__block');
+const images = document.querySelectorAll('.info__image-wrapper img');
+let currentImg = document.querySelector('.info__image-wrapper img.active');
+
+window.addEventListener('scroll', () => {
+  let currentBlock = null;
+
+  blocks.forEach(block => {
+    const rect = block.getBoundingClientRect();
+
+    // ✅ Меняем изображение, когда верх блока на расстоянии ≤100px от верха окна
+    if (rect.top <= 200 && rect.bottom > 200) {
+      currentBlock = block;
+    }
+  });
+
+  if (currentBlock) {
+    const newId = currentBlock.dataset.img;
+    const newImg = document.getElementById(newId);
+
+    if (newImg && newImg !== currentImg) {
+      currentImg.classList.remove('active');
+      newImg.classList.add('active');
+      currentImg = newImg;
+    }
+  }
+});
+

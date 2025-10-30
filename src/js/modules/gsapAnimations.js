@@ -267,23 +267,6 @@ if ( document.documentElement.classList.contains('_pc') ) {
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: el,
-        start: 'top center',
-        toggleActions: "play none none none",
-        once: true
-      },
-      defaults: { ease: "power3.inOut" }
-    });
-
-    tl.fromTo(el, { opacity: 0, yPercent: 20 }, { opacity: 1, yPercent: 0 });
-  }
-
-  function animateBlockBottom(selector) {
-    const el = document.querySelector(selector);
-    if (!el) return;
-
-    let tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: el,
         start: 'center bottom',
         toggleActions: "play none none none",
         once: true
@@ -306,6 +289,32 @@ if ( document.documentElement.classList.contains('_pc') ) {
     animateBlock("#youCompany");
     animateBlock("#youGet");
     animateBlock("#day1");
-    animateBlockBottom("#footer");
+    animateBlock("#footer");
   });
+
+  // const blocks = document.querySelectorAll('.info__block');
+  // const images = document.querySelectorAll('.info__image-wrapper img');
+  // let currentImg = document.querySelector('.info__image-wrapper img.active');
+  //
+  // window.addEventListener('scroll', () => {
+  //   let currentBlock = null;
+  //
+  //   blocks.forEach(block => {
+  //     const rect = block.getBoundingClientRect();
+  //     if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+  //       currentBlock = block;
+  //     }
+  //   });
+  //
+  //   if (currentBlock) {
+  //     const newId = currentBlock.dataset.img;
+  //     const newImg = document.getElementById(newId);
+  //
+  //     if (newImg && newImg !== currentImg) {
+  //       gsap.to(currentImg, { opacity: 0, duration: 0.6, ease: "power2.out" });
+  //       gsap.to(newImg, { opacity: 1, duration: 0.6, ease: "power2.out" });
+  //       currentImg = newImg;
+  //     }
+  //   }
+  // });
 }
