@@ -177,6 +177,7 @@ function updateCurrentSlide(swiper) {
 const total = day1Slider.slides.length; // если loop = false, можно просто swiper.slides.length
 document.querySelector('#day1 .total').textContent = `(${total.toString().padStart(2, '0')})`;
 
+const blocksWrapper = document.querySelector('.info__blocks');
 const blocks = document.querySelectorAll('.info__block');
 const images = document.querySelectorAll('.info__image-wrapper img');
 let currentImg = document.querySelector('.info__image-wrapper img.active');
@@ -188,9 +189,24 @@ window.addEventListener('scroll', () => {
     const rect = block.getBoundingClientRect();
 
     // ✅ Меняем изображение, когда верх блока на расстоянии ≤100px от верха окна
-    if (rect.top <= 200 && rect.bottom > 200) {
-      currentBlock = block;
+    if ( document.documentElement.classList.contains('_pc') ) {
+      if (rect.top <= 200 && rect.bottom > 200) {
+        currentBlock = block;
+      }
+    } else {
+      if (rect.top <= remToPx(19.4285714286) && rect.bottom > remToPx(19.4285714286)) {
+        currentBlock = block;
+
+        const imageWrapper = document.querySelector(".info__image-wrapper");
+        const lastBlock = blocks[blocks.length - 1];
+
+// Добавляем margin-bottom равный высоте последнего блока
+        imageWrapper.style.marginBottom = lastBlock.offsetHeight + "px";
+        blocksWrapper.style.marginTop = "-" + lastBlock.offsetHeight + "px";
+
+      }
     }
+
   });
 
   if (currentBlock) {

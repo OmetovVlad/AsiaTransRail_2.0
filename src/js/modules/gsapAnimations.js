@@ -267,6 +267,23 @@ if ( document.documentElement.classList.contains('_pc') ) {
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: el,
+        start: 'top center',
+        toggleActions: "play none none none",
+        once: true
+      },
+      defaults: { ease: "power3.inOut" }
+    });
+
+    tl.fromTo(el, { opacity: 0, yPercent: 20 }, { opacity: 1, yPercent: 0 });
+  }
+
+  function animateBlockBottom(selector) {
+    const el = document.querySelector(selector);
+    if (!el) return;
+
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: el,
         start: 'center bottom',
         toggleActions: "play none none none",
         once: true
@@ -289,7 +306,7 @@ if ( document.documentElement.classList.contains('_pc') ) {
     animateBlock("#youCompany");
     animateBlock("#youGet");
     animateBlock("#day1");
-    animateBlock("#footer");
+    animateBlockBottom("#footer");
   });
 
   // const blocks = document.querySelectorAll('.info__block');
@@ -317,4 +334,15 @@ if ( document.documentElement.classList.contains('_pc') ) {
   //     }
   //   }
   // });
+
+  const content = document.querySelector(".info__content");
+  const image = document.querySelector(".info__image-wrapper");
+
+  ScrollTrigger.create({
+    trigger: content,
+    start: "top-=200 top",
+    end: () => "+=" + (content.offsetHeight - image.offsetHeight), // длина пина
+    pin: image,
+    pinSpacing: false
+  });
 }
