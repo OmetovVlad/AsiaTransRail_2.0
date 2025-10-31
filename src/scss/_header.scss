@@ -87,18 +87,28 @@
   background: #ffffff;
   background: linear-gradient(180deg, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 0) 100%);
   z-index: 8;
+  transition: .25s linear;
 
   @media (max-width: 767px) {
     display: flex;
   }
 
   a {
+    position: relative;
     display: block;
     padding: 1.142857142857143rem;
 
     img {
       display: block;
       height: 1.428571428571429rem;
+      transition: .25s linear;
+
+      &.open {
+        position: absolute;
+        top: 1.142857142857143rem;
+        left: 1.142857142857143rem;
+        opacity: 0;
+      }
     }
   }
 
@@ -162,5 +172,95 @@
     top: 0.6428571428571429rem;
     width: 0;
     left: 50%;
+  }
+
+  .menu {
+    position: fixed;
+    top: 3.714285714285714rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #4C5866;
+    display: flex;
+    flex-direction: column;
+    padding: 4.571428571428571rem 0;
+    pointer-events: none;
+    //transform: translate(0, -50%);
+    overflow: hidden;
+    opacity: 0;
+    z-index: 7;
+    transition: .25s ease-in-out;
+
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: -50%;
+      background: rgba(215, 215, 215, 10.05);
+      background: linear-gradient(180deg, rgba(215, 215, 215, 0.25) 0%, rgba(46, 58, 72, 0.32) 37%, rgba(233, 73, 44, 0.7) 100%);
+      z-index: 0;
+    }
+
+    ul {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      padding: 0;
+      margin: auto 0;
+      z-index: 1;
+
+      li {
+        a {
+          display: block;
+          text-align: center;
+          text-decoration: none;
+          font-size: 1.571428571428571rem;
+          font-weight: 500;
+          line-height: 2.285714285714286rem;
+          letter-spacing: -0.0857142857142857rem;
+          color: #FFFFFF;
+        }
+      }
+    }
+
+    .event_buttons {
+      position: relative;
+      z-index: 1;
+      .button {
+        padding: 0 2rem;
+        color: #FFFFFF;
+        border: 1px solid #FFFFFF;
+        margin: 0 auto;
+        line-height: 1.428571428571429rem;
+      }
+    }
+  }
+
+  &.open {
+    background: #4C5866;
+
+    button .x span {
+      background: #FFFFFF;
+    }
+
+    a {
+      img {
+        opacity: 0;
+
+        &.open {
+          opacity: 1;
+        }
+      }
+    }
+
+    .menu {
+      //transform: translate(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
   }
 }

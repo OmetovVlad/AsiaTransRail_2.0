@@ -1,74 +1,74 @@
-import { EffectFade, Navigation, Pagination } from "swiper/modules";
+import {EffectFade, Navigation, Pagination} from "swiper/modules";
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js';
 import { gsap } from 'gsap';
 import Swiper from 'swiper';
 
 const remToPx = rem => rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+
 const canvasSize = remToPx(30.85714285714286);
 
 // 🔹 Canvas и сцена
 const canvas = document.getElementById('three-canvas');
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(45, canvasSize / canvasSize, 0.1, 100);
+const camera = new THREE.PerspectiveCamera(45, canvasSize/canvasSize, 0.1, 100);
 camera.position.z = 3;
 
 const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+
 renderer.setSize(canvasSize, canvasSize);
 renderer.setPixelRatio(window.devicePixelRatio);
-renderer.sortObjects = true;
-camera.aspect = 1;
+renderer.sortObjects = true; // важно для прозрачных объектов
+// обновляем камеру под новый размер
+camera.aspect = 1; // квадрат
 camera.updateProjectionMatrix();
 
 // 🔹 Освещение
-scene.add(new THREE.AmbientLight(0xffffff, 1));
+const ambientLight = new THREE.AmbientLight(0xffffff, 1); // мягкий свет
+scene.add(ambientLight);
+
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
 directionalLight.position.set(5, 5, 5);
 scene.add(directionalLight);
 
-// 🔹 Прелоадер
-// Добавь в HTML:
-// <div id="loader"><div id="progress">0%</div></div>
-const loaderDiv = document.getElementById("loader");
-const progressText = document.getElementById("progress");
+// 🔹 Loader
+const loader = new GLTFLoader();
 
-// 🔹 Loading Manager
-const manager = new THREE.LoadingManager();
-manager.onProgress = (url, itemsLoaded, itemsTotal) => {
-  const progress = Math.round((itemsLoaded / itemsTotal) * 100);
-  progressText.textContent = `${progress}%`;
-};
-manager.onLoad = () => {
-  gsap.to(loaderDiv, { opacity: 0, duration: 0.5, onComplete: () => loaderDiv.remove() });
-};
-
-// 🔹 GLTF Loader с менеджером
-const loader = new GLTFLoader(manager);
-
-// 🔹 Хранилище моделей
+// 🔹 Хранение моделей
 const models = {};
 const idleTweens = {};
 
 // 🔹 Idle-анимация
 function startIdleAnimation(model, index) {
   idleTweens[index] = gsap.to(model.rotation, {
-    y: "+=0.6",
+    y: "+=0.6",          // вращение влево-вправо
     duration: 2,
     repeat: -1,
     yoyo: true,
     ease: "sine.inOut"
   });
+
   gsap.to(model.position, {
-    y: "+=0.05",
+    y: "+=0.05",          // колебание вверх-вниз
     duration: 2,
     repeat: -1,
     yoyo: true,
     ease: "sine.inOut"
   });
 }
-function pauseIdle(index) { if (idleTweens[index]) idleTweens[index].pause(); }
-function resumeIdle(index) { if (idleTweens[index]) idleTweens[index].resume(); }
-function stopIdleAnimation(index) { if (idleTweens[index]) idleTweens[index].kill(); }
+
+function pauseIdle(index) {
+  if (idleTweens[index]) idleTweens[index].pause();
+}
+
+function resumeIdle(index) {
+  if (idleTweens[index]) idleTweens[index].resume();
+}
+
+function stopIdleAnimation(index) {
+  if (idleTweens[index]) idleTweens[index].kill();
+}
 
 // 🔹 Загрузка одной модели
 function loadModel(path) {
@@ -79,7 +79,7 @@ function loadModel(path) {
         if (child.isMesh) {
           child.material.transparent = true;
           child.material.opacity = 0;
-          child.material.depthWrite = false;
+          child.material.depthWrite = false; // для корректной прозрачности
         }
       });
       resolve(model);
@@ -87,20 +87,44 @@ function loadModel(path) {
   });
 }
 
-// 🔹 Загрузка всех моделей
+// 🔹 Подгружаем все модели заранее
 async function loadAllModels() {
   const slides = document.querySelectorAll('.threeSlider .swiper-slide');
   for (let i = 0; i < slides.length; i++) {
     const path = slides[i].dataset.model;
     const model = await loadModel(path);
 
+    // Центрируем модель
     const box = new THREE.Box3().setFromObject(model);
     const center = box.getCenter(new THREE.Vector3());
     model.position.sub(center);
 
-    // Индивидуальные настройки
-    const scaleMap = [1.5, 0.8, 1.5, 1.5, 1.2, 1.5];
-    model.scale.setScalar(scaleMap[i] || 1.2);
+    // Доп. настройки
+
+    if (i === 0) {
+      model.scale.set(1.5, 1.5, 1.5);
+      model.position.x -= 0.1;
+    }
+    if (i === 1) {
+      model.scale.set(0.7, 0.7, 0.7);
+    }
+    if (i === 2) {
+      model.scale.set(1.5, 1.5, 1.5);
+    }
+    if (i === 3) {
+      model.scale.set(1.5, 1.5, 1.5);
+      model.position.x -= 0.1;
+    }
+    if (i === 4) {
+      model.scale.set(1.1, 1.1, 1.1);
+      model.position.x -= 0.05;
+    }
+    if (i === 5) {
+      model.scale.set(1.6, 1.6, 1.6);
+      model.position.x -= 0.1;
+    }
+
+
     model.position.z = 1;
     model.rotation.y = -1.2;
 
@@ -110,26 +134,34 @@ async function loadAllModels() {
   }
 }
 
+
 // 🔹 Показ активной модели
 function showModel(index) {
   Object.entries(models).forEach(([i, model]) => {
     i = +i;
+
+    // Сначала ставим на паузу все idle
     pauseIdle(i);
+
     model.traverse(child => {
       if (child.isMesh) {
         if (i === index) {
+          // Плавная прозрачность
           gsap.to(child.material, { opacity: 1, duration: 0.75, ease: "power2.out" });
           child.material.depthWrite = true;
         } else {
           gsap.to(child.material, { opacity: 0, duration: 0.75, ease: "power2.out" });
           child.material.depthWrite = false;
         }
+
+        // Вращение на 360 градусов при появлении
         gsap.fromTo(model.rotation,
           { y: model.rotation.y },
-          { y: model.rotation.y + Math.PI * 2, duration: 0.75, ease: "power2.out",
-            onComplete: () => resumeIdle(i)
+          { y: model.rotation.y + Math.PI*2, duration: 0.75, ease: "power2.out",
+            onComplete: () => resumeIdle(i) // возобновляем idle после анимации
           }
         );
+
       }
     });
   });
@@ -151,23 +183,27 @@ const swiper = new Swiper('.threeSlider', {
     prevEl: "#services .swiper-button-prev",
   },
   on: {
-    init() {
+    init: function() {
       updateCurrentSlide(this);
-      showModel(this.realIndex);
+      const index = this.realIndex;
+      showModel(index);
     },
-    slideChange() {
+    slideChange: function() {
       updateCurrentSlide(this);
-      showModel(this.realIndex);
+      const index = this.realIndex;
+      showModel(index);
     }
   },
 });
 
 function updateCurrentSlide(swiper) {
-  const current = swiper.realIndex + 1;
-  document.querySelector('#services .current_slide').textContent = `(${current.toString().padStart(2, '0')})`;
+  const current = swiper.realIndex + 1; // Номер активного слайда
+  const formatted = current.toString().padStart(2, '0'); // Преобразуем в формат 01, 02, ...
+  document.querySelector('#services .current_slide').textContent = `(${formatted})`;
 }
-document.querySelector('#services .total').textContent =
-  `(${swiper.slides.length.toString().padStart(2, '0')})`;
+
+const total = swiper.slides.length; // если loop = false, можно просто swiper.slides.length
+document.querySelector('#services .total').textContent = `(${total.toString().padStart(2, '0')})`;
 
 // 🔹 Рендер
 function animate() {
@@ -178,5 +214,6 @@ animate();
 
 // 🔹 Инициализация
 loadAllModels().then(() => {
-  showModel(swiper.realIndex);
+  const firstIndex = swiper.realIndex;
+  showModel(firstIndex);
 });

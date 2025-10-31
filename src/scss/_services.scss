@@ -1,6 +1,6 @@
 #services {
   position: relative;
-  padding: 8.571428571428571rem 0;
+  padding: 8.571428571428571rem 0 4.285714285714286rem;
   overflow: hidden;
 
   @media (max-width: 767px) {
@@ -28,9 +28,12 @@
       @media (max-width: 767px) {
         margin-top: 2.285714285714286rem;
         margin-bottom: 1.142857142857143rem;
-        position: relative;
-        left: initial;
+        position: absolute;
+        top: 19.07142857142857rem;
+        left: 0;
+        right: 0;
         bottom: initial;
+        pointer-events: none;
       }
 
       .current_slide {
@@ -85,12 +88,13 @@
 
       @media (max-width: 767px) {
         //margin: 0 auto;
-        position: relative;
-        //left: 0;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        margin-left: 0;
         width: 19.07142857142857rem!important;
         height: 19.07142857142857rem!important;
-        //transform: none;
-        pointer-events: auto;
       }
     }
   }
@@ -119,6 +123,7 @@
 
       @media (max-width: 767px) {
         flex-direction: column;
+        padding-top: 23.92857142857143rem;
       }
 
       .left {

@@ -29,7 +29,8 @@
 
   .routes__controls {
     position: absolute;
-    top: 3.857142857142857rem;
+    //top: 3.857142857142857rem;
+    top: 0;
     right: 3.428571428571429rem;
     width: 47.14285714285714rem;
     display: flex;
@@ -68,8 +69,10 @@
         padding: 1rem;
         border: 0;
         border-radius: 0.5714285714285714rem;
-        appearance: none;
 
+        color: #000000;
+
+        appearance: none;
         background-image: url('../img/chevron-down.svg');
         background-repeat: no-repeat;
         background-position: right 1em center;

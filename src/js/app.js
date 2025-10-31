@@ -29,14 +29,20 @@ gsap.registerPlugin(ScrollTrigger);
 //   const mask = IMask(phoneInput, maskOptions);
 // })
 
-document.addEventListener('DOMContentLoaded', () => {
-  const btn = document.querySelector('.open_menu');
-  if (!btn) return;
-
-  btn.addEventListener('click', () => {
-    btn.classList.toggle('open');
-  });
-});
+// document.querySelectorAll('a.anchor').forEach(a => {
+//   a.addEventListener('click', e => {
+//     e.preventDefault();               // не дать браузеру поставить хеш
+//     const id = a.getAttribute('href').slice(1);
+//     const el = document.getElementById(id);
+//     if (!el) return;
+//     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+//
+//     // опционально: если хеш уже был и вы хотите его убрать:
+//     if (window.location.hash) {
+//       history.replaceState(null, '', window.location.pathname + window.location.search);
+//     }
+//   });
+// });
 
 const remToPx = (rem) => {
   return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
@@ -54,7 +60,7 @@ const mobileServicesList = new Swiper(".mobile_services_list", {
 const progressBar = document.querySelector('#aboutSlider .swiper-pagination span');
 const imageSlider = new Swiper('.imageSlider', {
   modules: [Navigation, Controller],
-  speed: 500,
+  speed: 300,
   loop: false,
   effect: 'gl',
   gl: {

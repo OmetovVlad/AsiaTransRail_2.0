@@ -33,3 +33,38 @@ export function isWebp() {
     document.documentElement.classList.add(className);
   });
 }
+
+// Блокировка скролла
+export const bodyLock = (e) => {
+  document.querySelector('body').classList.add('_lock');
+  let widthScrollBar = window.innerWidth - document.documentElement.clientWidth;
+  // document.querySelector('.header').style.marginRight = widthScrollBar + 'px';
+  document.querySelector('body').style.marginRight = widthScrollBar + 'px';
+};
+
+// Удаление блокировки скролла
+export const bodyUnLock = (e) => {
+  document.querySelector('body').style.marginRight = '0px';
+  // document.querySelector('.header').style.marginRight = '0px';
+  document.querySelector('body').classList.remove('_lock');
+};
+
+// Mobile Menu
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.querySelector('.open_menu');
+  if (!btn) return;
+
+  const headerEl = btn.closest('.mobile-header');
+
+  btn.addEventListener('click', () => {
+    headerEl.classList.toggle('open');
+    btn.classList.toggle('open');
+
+    if ( headerEl.classList.contains('open') ) {
+      bodyLock();
+    } else {
+      bodyUnLock();
+    }
+
+  });
+});

@@ -2,6 +2,7 @@ import { gsap } from "gsap";
 import ScrollToPlugin from "gsap/ScrollToPlugin.js";
 import ScrollTrigger from "gsap/ScrollTrigger.js";
 import ScrollSmoother from "gsap/ScrollSmoother.js";
+import {bodyUnLock} from "./baseFunctions.js";
 
 gsap.registerPlugin( ScrollSmoother, ScrollTrigger, ScrollToPlugin );
 
@@ -36,6 +37,45 @@ const smoother = ScrollSmoother.create({
   smooth: 1.2, // скорость плавности, чем выше — тем мягче
   effects: true, // можно использовать data-speed/data-lag для эффектов параллакса
 });
+
+document.querySelectorAll('a.anchor').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const id = a.dataset.target || a.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+
+    if (!el) return;
+
+    document.querySelector(`.mobile-header`).classList.remove('open');
+    document.querySelector(`.mobile-header .open_menu`).classList.remove('open');
+    bodyUnLock();
+
+    gsap.to(window, { duration: 0, scrollTo: { y: el, offsetY: 20 } }); // offsetY — при необходимости
+    history.replaceState(null, '', window.location.pathname + window.location.search); // убрать хеш
+  });
+});
+
+
+// anchors.forEach((link) => {
+//
+//   console.log(link);
+//
+//   link.addEventListener('click', e => {
+//     e.preventDefault();
+//
+//     console.log('clicked');
+//
+//     let href = link.getAttribute("href");
+//
+//     gsap.to(smoother, {
+//       scrollTop: Math.min(
+//         ScrollTrigger.maxScroll(window),
+//         smoother.offset(href, "top 100px")
+//       ),
+//       duration: 1,
+//     });
+//   });
+// });
 
 // const header = document.querySelector("header.header");
 //
@@ -279,6 +319,7 @@ if ( document.documentElement.classList.contains('_pc') ) {
 
   function animateBlockBottom(selector) {
     const el = document.querySelector(selector);
+    const elements = document.querySelectorAll(selector + ' > *');
     if (!el) return;
 
     let tl = gsap.timeline({
@@ -291,11 +332,13 @@ if ( document.documentElement.classList.contains('_pc') ) {
       defaults: { ease: "power3.inOut" }
     });
 
-    tl.fromTo(el, { opacity: 0, yPercent: 20 }, { opacity: 1, yPercent: 0 });
+    tl.fromTo(el, { opacity: 0 }, { opacity: 1 })
+      .fromTo(elements, { opacity: 0, yPercent: 20 }, { opacity: 1, yPercent: 0 });
   }
 
   function animateBlockTop(selector) {
     const el = document.querySelector(selector);
+    const elements = document.querySelectorAll(selector + ' > *');
     if (!el) return;
 
     let tl = gsap.timeline({
@@ -308,7 +351,8 @@ if ( document.documentElement.classList.contains('_pc') ) {
       defaults: { ease: "power3.inOut" }
     });
 
-    tl.fromTo(el, { opacity: 0, yPercent: 20 }, { opacity: 1, yPercent: 0 });
+    tl.fromTo(el, { opacity: 0 }, { opacity: 1 })
+      .fromTo(elements, { opacity: 0, yPercent: 20 }, { opacity: 1, yPercent: 0 });
   }
 
   window.addEventListener('load', () => {
@@ -318,6 +362,7 @@ if ( document.documentElement.classList.contains('_pc') ) {
     animateBlockTop("#tariffs");
     animateBlockTop("#clients");
     animateBlockTop("#partners");
+    animateBlockTop("#types");
     animateBlockTop("#callbackOrder");
     animateBlockTop("#services");
     animateBlockTop("#youCompany");

@@ -63,6 +63,10 @@ body {
   line-height: 1.428571428571429;
   padding: 0;
 
+  &._lock {
+    overflow: hidden;
+  }
+
 
   * {
     letter-spacing: -0.02rem;
