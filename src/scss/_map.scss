@@ -1,0 +1,221 @@
+#geography {
+  overflow: hidden;
+  position: relative;
+  padding: 4.285714285714286rem 0 8.571428571428571rem;
+
+  @media (max-width: 767px) {
+    padding: 2.285714285714286rem 0 4.571428571428571rem;
+  }
+
+  .map {
+    position: relative;
+    margin-top: 3.428571428571429rem;
+
+    svg {
+      position: relative;
+      display: block;
+      //width: 96rem;
+      //height: 70rem;
+      width: 67.26rem;
+      height: 49rem;
+      margin: 0 auto;
+      //transform: scale(.7);
+
+      @media (max-width: 767px) {
+        width: 25.57142857142857rem;
+        height: 18.64285714285714rem;
+        //transform: scale(1);
+      }
+
+      #map_elements {
+        //path {
+        //  opacity: 0.8;
+        //  transition: all 0.2s ease-in-out;
+        //  cursor: pointer;
+        //
+        //  &:hover {
+        //    opacity: 1;
+        //  }
+        //}
+
+        g {
+          path {
+            opacity: 0.6;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+          }
+
+          @media (hover: hover) {
+            &:hover {
+              path {
+                opacity: 0.8;
+
+                &:hover {
+                  opacity: 1;
+                }
+              }
+            }
+          }
+
+          &.active {
+            path {
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      #noactive,
+      #border {
+        pointer-events: none;
+      }
+
+      #Sea_2,
+      #Sea,
+      #Railway,
+      #Cities,
+      #Tooltips {
+        pointer-events: none;
+      }
+
+      #Tooltips > g {
+        opacity: 0;
+        transition: all 0.2s ease-in-out;
+        &.active {
+          opacity: 1;
+        }
+      }
+    }
+
+    .popup_map {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background-color: #FFFFFF;
+      background-image: url('../img/Map.svg');
+      background-repeat: no-repeat;
+      //background-size: 96rem 70rem;
+      background-size:  67.26rem 49rem;
+      //background-position: left 14.37rem bottom 10.5rem;
+      background-position: left 14rem bottom;
+      border-radius: 1.142857142857143rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s ease-in-out;
+
+      @media (max-width: 767px) {
+        background-position: left bottom;
+        background-size: 25.57142857142857rem 18.64285714285714rem;
+      }
+
+      &.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .item {
+        display: flex;
+        flex-direction: row;
+        gap: 1.714285714285714rem;
+        width: 47.14285714285714rem;
+        padding: 1.714285714285714rem;
+        border: 1px solid #D7D7D7;
+        background-color: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(4px);
+        border-radius: 1.142857142857143rem;
+
+        @media (max-width: 767px) {
+          width: 25.57142857142857rem;
+          padding: 1.142857142857143rem;
+          gap: 1.285714285714286rem;
+        }
+
+        .close {
+          position: absolute;
+          top: 1.714285714285714rem;
+          right: 1.714285714285714rem;
+          width: 1.714285714285714rem;
+          height: 1.714285714285714rem;
+          background-image: url('../img/close.svg');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          filter: invert(1);
+          cursor: pointer;
+
+          @media (max-width: 767px) {
+            top: 1.142857142857143rem;
+            right: 1.142857142857143rem;
+          }
+        }
+
+        .flag {
+          flex: 0 0 3.571428571428571rem;
+          width: 3.571428571428571rem;
+
+          @media (max-width: 767px) {
+            flex: 0 0 2.285714285714286rem;
+            width: 2.285714285714286rem;
+          }
+
+          img {
+            display: block;
+            width: 100%;
+            height: auto;
+          }
+        }
+
+        .content {
+          flex: 1;
+          h4 {
+            font-size: 3rem;
+            line-height: 3.428571428571429rem;
+            margin-bottom: 0.8571428571428571rem;
+            padding-right: 2.571428571428571rem;
+            letter-spacing: -0.1428571428571429rem;
+
+            @media (max-width: 767px) {
+              font-size: 1.571428571428571rem;
+              line-height: 2.285714285714286rem;
+              letter-spacing: -0.0857142857142857rem;
+              margin-bottom: 0.5714285714285714rem;
+            }
+          }
+
+          @media (max-width: 767px) {
+            .text {
+              max-height: 18.0428571429rem;
+              overflow: auto;
+            }
+          }
+
+
+          p {
+            margin: 0.8571428571428571rem 0;
+
+            @media (max-width: 767px) {
+              margin: 0.5714285714285714rem 0;
+            }
+          }
+
+          .button-line {
+            margin-top: 1.714285714285714rem;
+
+            @media (max-width: 767px) {
+              margin-top: 1.142857142857143rem;
+            }
+
+            .button {
+              width: 23.85714285714286rem;
+
+              @media (max-width: 767px) {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

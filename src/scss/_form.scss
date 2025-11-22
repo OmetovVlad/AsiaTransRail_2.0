@@ -142,6 +142,7 @@
       position: relative;
       padding-left: 2.285714285714286rem;
       transition: all 0.2s ease-in-out;
+      font-size: 0.8571428571428571rem;
 
       &:before {
         content: '';
@@ -211,6 +212,7 @@
       &:before {
         border-color: #e9492c!important;
         background-color: #e9492c;
+        opacity: 1;
       }
 
       &:after {

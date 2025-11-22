@@ -1,5 +1,5 @@
 .modal-dialog {
-  max-width: 32.85714285714286rem;
+  max-width: 32.85714285714286rem!important;
   margin: 0 1.142857142857143rem;
 
   @media (min-width: 768px) {
@@ -54,11 +54,20 @@
       background-position: center center;
       background-size: contain;
       opacity: 1;
+      box-shadow: none!important;
+      transition: all .2s ease-in-out;
 
       @media (max-width: 768px) {
         width: 1.428571428571429rem;
         height: 1.428571428571429rem;
         margin-top: 0.3571428571428571rem;
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          transform: scale(1.2);
+        }
+
       }
     }
   }

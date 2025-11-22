@@ -34,19 +34,21 @@ export function isWebp() {
   });
 }
 
+const widthScrollBar = window.innerWidth - document.documentElement.clientWidth;
+
+
 // Блокировка скролла
 export const bodyLock = (e) => {
-  document.querySelector('body').classList.add('_lock');
-  let widthScrollBar = window.innerWidth - document.documentElement.clientWidth;
+  document.querySelector('html').classList.add('_lock');
   // document.querySelector('.header').style.marginRight = widthScrollBar + 'px';
-  document.querySelector('body').style.marginRight = widthScrollBar + 'px';
+  // document.querySelector('body').style.paddingRight = widthScrollBar() + 'px';
 };
 
 // Удаление блокировки скролла
 export const bodyUnLock = (e) => {
-  document.querySelector('body').style.marginRight = '0px';
+  // document.querySelector('body').style.paddingRight = '0px';
   // document.querySelector('.header').style.marginRight = '0px';
-  document.querySelector('body').classList.remove('_lock');
+  document.querySelector('html').classList.remove('_lock');
 };
 
 // Mobile Menu

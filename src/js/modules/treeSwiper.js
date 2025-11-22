@@ -2,12 +2,27 @@ import {EffectFade, Navigation, Pagination} from "swiper/modules";
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
+
 import { gsap } from 'gsap';
 import Swiper from 'swiper';
 
 const remToPx = rem => rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
 
 const canvasSize = remToPx(30.85714285714286);
+
+const imagesWrapper = document.getElementById('three-canvas');
+// const images = document.getElementById('three-canvas').querySelectorAll('img');
+//
+// function showImage(index) {
+//   images.forEach((image, i) => {
+//     if (i === index) {
+//       image.classList.add('active');
+//     } else {
+//       image.classList.remove('active');
+//     }
+//   })
+// }
 
 // 🔹 Canvas и сцена
 const canvas = document.getElementById('three-canvas');
@@ -33,7 +48,13 @@ directionalLight.position.set(5, 5, 5);
 scene.add(directionalLight);
 
 // 🔹 Loader
+// const loader = new GLTFLoader();
+
 const loader = new GLTFLoader();
+
+// const dracoLoader = new DRACOLoader();
+// dracoLoader.setDecoderPath('/files/draco/');
+// loader.setDRACOLoader(dracoLoader);
 
 // 🔹 Хранение моделей
 const models = {};
@@ -187,22 +208,24 @@ const swiper = new Swiper('.threeSlider', {
       updateCurrentSlide(this);
       const index = this.realIndex;
       showModel(index);
+      // showImage(index);
     },
     slideChange: function() {
       updateCurrentSlide(this);
       const index = this.realIndex;
       showModel(index);
+      // showImage(index);
     }
   },
 });
 
 function updateCurrentSlide(swiper) {
   const current = swiper.realIndex + 1; // Номер активного слайда
-  const formatted = current.toString().padStart(2, '0'); // Преобразуем в формат 01, 02, ...
+  const formatted = current.toString().padStart(2, '0');
   document.querySelector('#services .current_slide').textContent = `(${formatted})`;
 }
 
-const total = swiper.slides.length; // если loop = false, можно просто swiper.slides.length
+const total = swiper.slides.length;
 document.querySelector('#services .total').textContent = `(${total.toString().padStart(2, '0')})`;
 
 // 🔹 Рендер

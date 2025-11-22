@@ -152,9 +152,11 @@
       }
     }
 
-    & > *:last-child {
+    @media (max-width: 767px) {
       & > *:last-child {
-        border-bottom: 0;
+        & > *:last-child {
+          border-bottom: 0;
+        }
       }
     }
   }

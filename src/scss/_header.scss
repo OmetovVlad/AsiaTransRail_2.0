@@ -62,6 +62,15 @@
     }
   }
 
+  .home {
+    display: block;
+    position: absolute;
+    width: 14.78571428571429rem;
+    height: 6.8571rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .event_buttons {
     display: flex;
     flex-direction: row;

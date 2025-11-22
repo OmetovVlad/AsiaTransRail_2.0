@@ -1,3 +1,6 @@
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger.js";
+
 import * as functions from './modules/baseFunctions.js';
 import 'bootstrap'
 
@@ -7,50 +10,23 @@ import {Navigation, EffectFade, EffectCreative, Controller, Pagination, Autoplay
 
 import './modules/treeSwiper.js';
 
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger.js";
-
 import './modules/phoneInputMask.js';
 import './modules/gsapAnimations.js';
 
 import './modules/chart.js';
 import './modules/form.js';
 import './modules/tariffs.js';
+import './modules/tooltips.js';
 
 functions.isWebp();
-gsap.registerPlugin(ScrollTrigger);
-
-// const phoneInputs = document.querySelectorAll('.phone');
-// const maskOptions = {
-//   mask: '+{7} (000) 000-00-00'
-// };
-//
-// phoneInputs.forEach((phoneInput) => {
-//   const mask = IMask(phoneInput, maskOptions);
-// })
-
-// document.querySelectorAll('a.anchor').forEach(a => {
-//   a.addEventListener('click', e => {
-//     e.preventDefault();               // не дать браузеру поставить хеш
-//     const id = a.getAttribute('href').slice(1);
-//     const el = document.getElementById(id);
-//     if (!el) return;
-//     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-//
-//     // опционально: если хеш уже был и вы хотите его убрать:
-//     if (window.location.hash) {
-//       history.replaceState(null, '', window.location.pathname + window.location.search);
-//     }
-//   });
-// });
 
 const remToPx = (rem) => {
   return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
 };
 
+gsap.registerPlugin(ScrollTrigger);
 
 Swiper.use([Navigation, SwiperGL, Controller, EffectFade, EffectCreative, Pagination, Autoplay]);
-
 
 const mobileServicesList = new Swiper(".mobile_services_list", {
   slidesPerView: 1.34,
@@ -117,14 +93,18 @@ textSlider.params.autoplay = {
   disableOnInteraction: false,
 };
 
-// Включаем autoplay, когда дошли до блока
-ScrollTrigger.create({
-  trigger: "#aboutSlider",
-  start: "top center",
-  onEnter: () => textSlider.autoplay.start(),
-  onLeave: () => textSlider.autoplay.stop(),
-  onLeaveBack: () => textSlider.autoplay.stop(), // если хочешь, чтобы останавливался при прокрутке вверх
-});
+  // Включаем autoplay, когда дошли до блока
+
+  if (document.querySelector('#aboutSlider')) {
+    ScrollTrigger.create({
+      trigger: "#aboutSlider",
+      start: "top center",
+      onEnter: () => textSlider.autoplay.start(),
+      onLeave: () => textSlider.autoplay.stop(),
+      onLeaveBack: () => textSlider.autoplay.stop(), // если хочешь, чтобы останавливался при прокрутке вверх
+    });
+  }
+
 
 const storySlider = new Swiper(".storySlider", {
   modules: [Navigation],
@@ -183,47 +163,104 @@ function updateCurrentSlide(swiper) {
 const total = day1Slider.slides.length; // если loop = false, можно просто swiper.slides.length
 document.querySelector('#day1 .total').textContent = `(${total.toString().padStart(2, '0')})`;
 
-const blocksWrapper = document.querySelector('.info__blocks');
-const blocks = document.querySelectorAll('.info__block');
-const images = document.querySelectorAll('.info__image-wrapper img');
-let currentImg = document.querySelector('.info__image-wrapper img.active');
+window.addEventListener("scroll", () => {
+  const blocks = document.querySelectorAll(".info__block");
+  const blocksWrapper = document.querySelector(".info__blocks");
+  const imageWrapper = document.querySelector(".info__image-wrapper");
 
-window.addEventListener('scroll', () => {
-  let currentBlock = null;
+  const images = document.querySelectorAll(".info__image-wrapper img");
+  let currentImg = document.querySelector(".info__image-wrapper img.active");
 
-  blocks.forEach(block => {
+  let activeBlock = blocks[0];
+
+  const triggerOffset = window.innerWidth > 768
+    ? imageWrapper.getBoundingClientRect().bottom
+    : remToPx(19.4285714286);
+
+  let found = false;
+
+  blocks.forEach((block, i) => {
     const rect = block.getBoundingClientRect();
 
-    // ✅ Меняем изображение, когда верх блока на расстоянии ≤100px от верха окна
-    if ( document.documentElement.classList.contains('_pc') ) {
-      if (rect.top <= 200 && rect.bottom > 200) {
-        currentBlock = block;
+    if (window.innerWidth > 768) {
+      // DESKTOP
+      if (rect.top + 1 <= triggerOffset) {
+        activeBlock = block;
+        found = true;
       }
     } else {
-      if (rect.top <= remToPx(19.4285714286) && rect.bottom > remToPx(19.4285714286)) {
-        currentBlock = block;
+      // MOBILE (sticky)
+      if (rect.top <= triggerOffset && rect.bottom > triggerOffset) {
+        activeBlock = block;
+        found = true;
 
-        const imageWrapper = document.querySelector(".info__image-wrapper");
         const lastBlock = blocks[blocks.length - 1];
-
-// Добавляем margin-bottom равный высоте последнего блока
         imageWrapper.style.marginBottom = lastBlock.offsetHeight + "px";
         blocksWrapper.style.marginTop = "-" + lastBlock.offsetHeight + "px";
-
       }
     }
-
   });
 
-  if (currentBlock) {
-    const newId = currentBlock.dataset.img;
-    const newImg = document.getElementById(newId);
+  // ❗ ЕСЛИ НИ ОДИН БЛОК НЕ НАЙДЕН — НЕ МЕНЯЕМ КАРТИНКУ
+  // Это защищает от возврата к 1-й картинке
+  if (!found) return;
 
-    if (newImg && newImg !== currentImg) {
-      currentImg.classList.remove('active');
-      newImg.classList.add('active');
-      currentImg = newImg;
-    }
+  // Меняем картинку
+  const newId = activeBlock.dataset.img;
+  const newImg = document.getElementById(newId);
+
+  if (newImg && newImg !== currentImg) {
+    currentImg.classList.remove("active");
+    newImg.classList.add("active");
   }
 });
+
+
+
+const mapGroups = document.querySelectorAll('#geography svg #map_elements > g');
+const mapTooltips = document.querySelectorAll('#geography svg #Tooltips > g');
+const mapPopups = document.querySelectorAll('#geography .popup_map');
+mapGroups.forEach(mapElement => {
+
+  const id = mapElement.getAttribute('id');
+
+  mapElement.addEventListener('click', () => {
+    mapGroups.forEach(el => {
+      el.classList.remove('active');
+    })
+    mapPopups.forEach(mapPopup => {
+      mapPopup.classList.remove('active');
+    })
+    mapElement.classList.add('active');
+    document.getElementById(id + '_popup').classList.add('active');
+  })
+
+  mapElement.addEventListener('mouseover', (e) => {
+    document.getElementById(id + '_tooltip').classList.add('active');
+  })
+
+  mapElement.addEventListener('mouseout', (e) => {
+    mapTooltips.forEach(mapTooltip => {
+      mapTooltip.classList.remove('active');
+    })
+  })
+})
+
+mapPopups.forEach(mapPopup => {
+  mapPopup.querySelector('.close').addEventListener('click', () => {
+    mapGroups.forEach(el => {
+      el.classList.remove('active');
+    })
+    mapPopups.forEach(mapPopup => {
+      mapPopup.classList.remove('active');
+    })
+  })
+})
+
+
+
+
+
+
+
 

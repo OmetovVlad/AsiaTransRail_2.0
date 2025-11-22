@@ -27,6 +27,7 @@
         img {
           width: 100%;
           display: block;
+          transform: scale(.75);
 
           @media (max-width: 767px) {
             width: 14.57142857142857rem;
@@ -69,7 +70,7 @@
             width: 0.5714285714285714rem;
             height: 0.5714285714285714rem;
             background: #E9492C;
-            transform: translate(50%, -50%);
+            transform: translate(0, -50%);
             border-radius: 50%;
           }
         }

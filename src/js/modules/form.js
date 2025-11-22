@@ -1,4 +1,5 @@
 import { Modal } from 'bootstrap';
+import {bodyLock, bodyUnLock} from "./baseFunctions.js";
 
 // Инициализация формы
 (() => {
@@ -20,7 +21,37 @@ import { Modal } from 'bootstrap';
           currentModal.hide();
         }
 
-        fetch("/lead_form_phone.php", {
+
+        const phone = form.querySelector('input[name="phone"]').value;
+        const approve = form.querySelector('input[name="isagree"]').checked;
+        const subscribe = 0;
+
+        let sendFormURL = '/lead_form_phone.php'
+        let data = {};
+
+        if (form.querySelector('input[name="name"]')) {
+          sendFormURL = '/lead_form_price.php'
+
+          const name = form.querySelector('input[name="name"]').value;
+          const email = form.querySelector('input[name="email"]').value;
+          const message = form.querySelector('textarea[name="message"]').value;
+
+          data = {
+            name: name,
+            phone: phone,
+            email: email,
+            message: message,
+            confirmPolicy: approve
+          };
+        } else {
+          data = {
+            phone: phone,
+            confirmPolicy: approve,
+            subscribe: subscribe
+          };
+        }
+
+        fetch(sendFormURL, {
           method: "POST",
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify(data)
